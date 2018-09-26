@@ -1,0 +1,8 @@
+# Output of robot_tests
+/test_output/*
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+/.idea/
+debug.log
