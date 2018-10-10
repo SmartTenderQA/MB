@@ -123,11 +123,12 @@ Postcondition
 
 Відкрити закладку "Классификатор ресурсов (весь)"
   Wait Until Keyword Succeeds  30  3  Click Element  xpath=//div[contains(text(), 'Классификатор ресурсов (весь)')]
+  Дочекатись загрузки сторінки (МВ)
   ${status}  Run Keyword And Return Status  Wait Until Element Is Visible  xpath=//*[contains(text(), 'Классификатор ресурсов (весь)')]/ancestor::div[contains(@class, 'active')]  30s
   Run Keyword If  '${status}' == 'True'
   ...  No Operation
-  ...  ELSE  Click Element  xpath=//div[contains(text(), 'Классификатор ресурсов (весь)')]
-  Дочекатись Загрузки Сторінки (МВ)
+  ...  ELSE  Відкрити закладку "Классификатор ресурсов (весь)"
+
 
 Відкрити вкладку "Экономика (бух.учет)"
   Click Element  xpath=(//*[contains(text(), 'Экономика(бух.учет)')])[1]
