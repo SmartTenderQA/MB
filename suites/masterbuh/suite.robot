@@ -164,7 +164,7 @@ Postcondition
   ${field}  Set Variable  xpath=//td[contains(text(), 'Контрагенты')]/following-sibling::td
   ${input_field}  Set Variable  xpath=//td[contains(text(), 'Контрагенты')]/following-sibling::td//input
   Click Element  ${field}
-  Sleep  1s
+  Дочекатись загрузки сторінки (МВ)
   Click Element  ${field}
   Input Text  ${input_field}  ${text}
   Press Key  ${input_field}  \\13
