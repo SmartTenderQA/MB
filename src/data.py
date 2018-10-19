@@ -7,6 +7,10 @@ def get_env_variable(env, env_variable):
             'login': u'Главный бухгалтер',
             'password': '',
         },
+        'BUHGOVA2': {
+            'login': u'Главный бухгалтер',
+            'password': '',
+        },
         'MBTEST_ALL': {
             'login': u'Адміністратор',
             'password': '',

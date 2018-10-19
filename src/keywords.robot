@@ -14,6 +14,7 @@ ${browser}                            chrome
 ...                                   MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
 ...                                   MBDEMO_ALL=http://192.168.1.205/wsmbdemo_all/client/(S(4jfyvmpjrtsn2ggyct0l0rjc))/Splash?proj=it_UK&tz=3
 ...                                   BUHETLA2=https://webclient.it-enterprise.com/client/(S(3fxdkqyoyyvaysv2iscf02h3))/?proj=K_BUHETLA2_RU&dbg=1&win=1&tz=3
+...                                   BUHGOVA2=https://webclient.it-enterprise.com/client/(S(p1q3v1lbby1zklpuhuz43i0i))/?proj=K_BUHGOVA2_RU&dbg=1&tz=3
 ${loading}                            xpath=//table[contains(@id, 'LoadingPanel')]
 ${catalogs}                           xpath=//div[contains(@class, 'TreeViewContainer')]//*[contains(text(), 'Справочники')]
 ${add_in_main_menu}                   xpath=(//*[contains(@class, 'dxr-groupList')])[1]//*[contains(text(), 'Добавить')]
@@ -50,6 +51,7 @@ Check Prev Test Status
   Go To  ${url.${env}}
   Run Keyword If  '${env}' == 'MBTEST_ALL'  Location Should Contain  /wsmbtest_all/
   Run Keyword If  '${env}' == 'BUHETLA2'    Location Should Contain  _BUHETLA2_
+  Run Keyword If  '${env}' == 'BUHGOVA2'    Location Should Contain  _BUHGOVA2_
   Run Keyword If  '${env}' == 'MBDEMO_ALL'  debug
 
 
@@ -59,6 +61,15 @@ Check Prev Test Status
 
 
 Авторизуватися BUHETLA2
+  [Arguments]  ${login}  ${password}=None
+  Wait Until Page Contains  Вход в систему  60
+  Вибрати користувача  ${login}
+  Ввести пароль  ${password}
+  Натиснути кнопку вхід
+  Дочекатись загрузки сторінки (MB)
+
+
+Авторизуватися BUHGOVA2
   [Arguments]  ${login}  ${password}=None
   Wait Until Page Contains  Вход в систему  60
   Вибрати користувача  ${login}
@@ -92,6 +103,10 @@ Check Prev Test Status
 
 
 Натиснути кнопку вхід BUHETLA2
+  Click Element At Coordinates  xpath=(//*[contains(text(), 'Войти')])[1]  -40  0
+
+
+Натиснути кнопку вхід BUHGOVA2
   Click Element At Coordinates  xpath=(//*[contains(text(), 'Войти')])[1]  -40  0
 
 
