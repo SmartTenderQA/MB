@@ -225,11 +225,9 @@ Scroll Page To Element XPATH
 
 
 Дочекатись загрузки сторінки (MB)
-  ${loading_selector}  Set Variable  //span[@id="LoadingPanel_TL"]   #//div[@id="LoadingPanel"]
+  ${loading_selector}  Set Variable  //img[contains(@class, "loadingImage")]  #//span[@id="LoadingPanel_TL"]  //table[@id="LoadingPanel"]
   ${status}  ${message}  Run Keyword And Ignore Error  Wait Until Element Is Visible  ${loading_selector}  5
   Run Keyword If  "${status}" == "PASS"  Run Keyword And Ignore Error  Wait Until Element Is Not Visible  ${loading_selector}  120
-
-
 
 
 Натиснути кнопку "Выбор"
@@ -239,7 +237,7 @@ Scroll Page To Element XPATH
 
 Обрати категорію меню
   [Arguments]  ${item}
-  Wait Until Page Contains Element  //label[contains(@style, "vertical-align") and contains(text(), '${item}')]  30
+  Wait Until Page Contains Element  //label[contains(@style, "vertical-align") and contains(text(), '${item}')]
   Click Element  //label[contains(text(), '${item}')]
 
 
@@ -250,16 +248,6 @@ Scroll Page To Element XPATH
   Дочекатись загрузки сторінки (MB)
 
 
-Перевірити що открито сторінку "Реализация товаров и услуг"
-  Wait Until Page Contains Element  //td[contains (@valign, "top") and contains(text(), "Реестр")]  30
-
-
-Підрахувати початкову кількість документів
-  ${quantity}  Get Element Count
-  ...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "Row")]
-  Set Global Variable  ${initial_documents_quantity}  ${quantity}
-
-
 Натиснути кнопку
   [Arguments]  ${button_name}
   Wait Until Page Contains Element  //*[@title='${button_name}']  30
@@ -268,47 +256,9 @@ Scroll Page To Element XPATH
   Дочекатись загрузки сторінки (MB)
 
 
-Перевірка сторінки додавання документу
-  Wait Until Page Contains Element  //li[contains(@class, "activeTab")]/a/span[contains(text(), "Документ")]  30
-  ${value}  Get Element Attribute  //span[contains(., "Тип процесса")]/following-sibling::div//input  value
-  ${list}  Create List  Акт оказанных услуг _ACTOUTS  Акт оказанных услуг (_ACTOUTS)
-  Should Contain Any  ${list}  ${value}
-
-
-Заповнити поля для додавання документу
-  Заповнити поле Контр агента
-  Заповнити поле Договір
-  Вибрати відповідального
-
-
-Заповнити поле Контр агента
-  ${contractor_selector}  Set Variable  //span[contains(., "Контрагент")]/following-sibling::div//input
-  Input Text  ${contractor_selector}  13356
-  Press Key  ${contractor_selector}  \\09
-  Sleep  2
-
-
-Заповнити поле Договір
-  ${agreement_selector}  Set Variable  //span[contains(., "Договор")]/following-sibling::div//input
-  Input Text  ${agreement_selector}  *
-  Press Key  ${agreement_selector}  \\09
-  Sleep  2
-
-
-Вибрати відповідального
-  ${responsible_selector}  Set Variable  //span[contains(., "Ответственный")]/following-sibling::div//input
-  ${responsible_dropdown_selector}  Set Variable
-  ...  //span[contains(., "Ответственный")]/following-sibling::div//td[contains(@title, "Поиск элементов по введенному")]
-  ${cell_selector}  Set Variable  //div[contains(@class, "combo_cell_text")]
-  Click Element  ${responsible_selector}
- #Sleep  2
-  Wait Until Element Is Visible  ${responsible_selector}  15
-  Click Element  ${responsible_dropdown_selector}
-  Wait Until Element Is Visible  ${cell_selector}  15
-  Sleep  2
-  Click Element  ${cell_selector}
-  Sleep  3
-
+Перевірити відсутність кнопки
+  [Arguments]  ${button_name}
+  Page Should Not Contain Element  //*[@title='${button_name}']
 
 
 Натиснути кнопку форми
@@ -323,87 +273,11 @@ Scroll Page To Element XPATH
   Run Keyword If  ${status} == ${False}  Натиснути кнопку форми  ${button}
 
 
-Обрати режим формування
-  [Arguments]  ${mode}
-  Wait Until Page Contains Element  //span[contains(text(), '${mode}')]  60
-  Click Element  //span[contains(text(), '${mode}')]
-  Дочекатись загрузки сторінки (MB)
-
-
-Перевірити що відкрито форму "Добавление. Строки"
-  Wait Until Page Contains Element  //span[contains(., "Добавление. Строки")]  45
-  Click Element  (//li/a/span[contains(., "Параметры")])[2]
-  ${value}  Get Element Attribute  (//span[contains(., "Тип строки")]/following-sibling::table//input)[2]  value
-  Should Be Equal  Услуги оказанные  ${value}
-
-
-Ввести дані в поле "Код ТМЦ"
-  ${TMC_code_selector}  Set Variable  (//table[@class="dhxcombo_outer"])[3]//input
-  Wait Until Page Contains Element  ${TMC_code_selector}  30
-  Input Text  ${TMC_code_selector}  200200000000016
-  Sleep  2
-#  без этого ожидания поле очищается
-  Press Key  ${TMC_code_selector}  \\09
-  Sleep  3
-  ${TMC_code}  Get Element Attribute  ${TMC_code_selector}  value
-  ${status}  Run Keyword And Return Status  Should Be Equal  '${TMC_code}'  'Аренда помещения (200200000000016)'
-  Run Keyword If  ${status} == ${False}  Ввести дані в поле "Код ТМЦ"
-
-
-Ввести кількість
-  ${quantity_selector}  Set Variable  //table[@data-name="KOL"]//input
-  Wait Until Element Is Visible  ${quantity_selector}  30
-  Input Text  ${quantity_selector}  1
-  Press Key  ${quantity_selector}  \\09
-  Дочекатись загрузки сторінки (MB)
-  Sleep  2
-
-
-Ввести вартість
-  ${price_selector}  Set Variable  //table[@data-name="CENA_1VAL"]//input
-  Input Text  ${price_selector}  4000
-  Sleep  1
-  Press Key  ${price_selector}  \\09
-  Sleep  2
-  Дочекатись загрузки сторінки (MB)
-
-
-Ввести код
-  ${code_selector}  Set Variable  (//td[contains(@class, "editable")])//input
-  Wait Until Element Is Visible  (//td[@class="cellselected"])[3]  30
-  Click Element  (//td[@class="cellselected"])[3]
-  Sleep  1
-  Wait Until Element Is Enabled  ${code_selector}  30
-  Input Text  ${code_selector}  D0201
-  Press Key  ${code_selector}  \\09
-  Sleep  4
-
-
-Підрахувати поточну кількість документів
-  ${quantity}  Get Element Count
-  ...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "Row")]
-  Set Global Variable  ${current_documents_quantity}  ${quantity}
-
-
-Перевірити додавання документу
-  Should Be True  ${current_documents_quantity} == (${initial_documents_quantity} + 1)
-  Перевірити що статус поточного документу  Ввод
-
-
-Перевірити проведення документу
-  Дочекатись загрузки сторінки (MB)
-  Перевірити що статус поточного документу  Проведен
-
-
-Перевірити відміну проведення
-  Дочекатись загрузки сторінки (MB)
-  Перевірити що статус поточного документу  Ввод
-  Page Should Contain Element  //*[@title="Провести (Alt+Right)"]
-
-
 Перевірити що статус поточного документу
   [Arguments]  ${status}
-  ${active_row_selector}  Set Variable
-  ...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "rowselected")]/td[3]
+  Set Global Variable  ${active_row_selector}
+  ...  //td[contains(@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "rowselected")]/td[3]
   ${text}  Get Text  ${active_row_selector}
   Should Be True  '${text}' == '${status}'
+
+
