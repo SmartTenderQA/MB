@@ -14,19 +14,24 @@ ${browser}                            chrome
 ...                                   MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
 ...                                   MBDEMO_ALL=http://192.168.1.205/wsmbdemo_all/client/(S(4jfyvmpjrtsn2ggyct0l0rjc))/Splash?proj=it_UK&tz=3
 ...                                   BUHETLA2=https://webclient.it-enterprise.com/client/(S(3fxdkqyoyyvaysv2iscf02h3))/?proj=K_BUHETLA2_RU&dbg=1&win=1&tz=3
-...                                   BUHGOVA2=https://webclient.it-enterprise.com/client/(S(p1q3v1lbby1zklpuhuz43i0i))/?proj=K_BUHGOVA2_RU&dbg=1&tz=3
+...                                   BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
 ${loading}                            xpath=//table[contains(@id, 'LoadingPanel')]
 ${catalogs}                           xpath=//div[contains(@class, 'TreeViewContainer')]//*[contains(text(), 'Справочники')]
 ${add_in_main_menu}                   xpath=(//*[contains(@class, 'dxr-groupList')])[1]//*[contains(text(), 'Добавить')]
 ${login_field}                        xpath=//*[@data-name="Login"]//input[not(@type="hidden")]
 ${pass_field}                         xpath=//*[@data-name="Password"]//input[not(@type='hidden')]
 
+${alies}                              alies
+${hub}                                http://autotest.it.ua:4444/wd/hub
+${platform}                           ANY
+
+
 
 *** Keywords ***
 Preconditions
   ${login}  ${password}  Отримати дані проекту  ${env}
-  Open Browser  ${url.${env}}  ${browser}
-  Set Window Size  1280  1024
+  Open Browser  ${url.${env}}  ${browser}  ${alies}  ${hub}  #platformName:${platform}
+  #Set Window Size  1280  1024
 
 
 Postcondition
@@ -282,10 +287,10 @@ Scroll Page To Element XPATH
   Wait Until Element Is Visible  ${selector}  30
   Sleep  .5
   Click Element  ${selector}
-  Sleep  5
+  #Sleep  5
   Дочекатись загрузки сторінки (MB)
-  ${status}  Run Keyword And Return Status  Wait Until Element Is Not Visible    ${selector}
-  Run Keyword If  ${status} == ${False}  Натиснути кнопку форми  ${button}
+  #${status}  Run Keyword And Return Status  Wait Until Element Is Not Visible    ${selector}
+  #Run Keyword If  ${status} == ${False}  Натиснути кнопку форми  ${button}
 
 
 Перевірити що статус поточного документу

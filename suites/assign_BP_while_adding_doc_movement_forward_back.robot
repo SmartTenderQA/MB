@@ -125,7 +125,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   ${status}  Run Keyword And Return Status  Wait Until Page Contains Element  //span[contains(text(), '${mode}')]  5
   Run Keyword If  ${status} == ${True}  Run Keywords
   ...  Click Element  //span[contains(text(), '${mode}')]
-  ...  AND  Дочекатись загрузки сторінки (buhetla2)
+  ...  AND  Дочекатись загрузки сторінки (WB)
 
 
 Підрахувати початкову кількість документів
