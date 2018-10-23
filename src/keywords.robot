@@ -30,7 +30,7 @@ ${platform}                           ANY
 *** Keywords ***
 Preconditions
   ${login}  ${password}  Отримати дані проекту  ${env}
-  Open Browser  ${url.${env}}  ${browser}  #${alies}  ${hub}  #platformName:${platform}
+  Open Browser  ${url.${env}}  ${browser}  ${alies}  ${hub}  #platformName:${platform}
   Run Keyword If  '${browser}' != 'edge'  Set Window Size  1280  1024
 
 
