@@ -37,6 +37,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 Заповнити поля у вікні "Добавление. Строки"
+  Обрати режим формування  Ввести вручную
   Заповнити поле  Код ТМЦ     1812000000000AP
   Заповнити поле  Кол.факт    10
   Заповнити поле  ГРН:        52
@@ -50,9 +51,27 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Підрахувати поточну кількість документів
   Перевірити що в реєстрі документів з'явилась нова строка
   Перевірити що стадія поточного документу  Ввод
-  debug
 
 
+Стати курсором на додану строку в закладці «Реестр документов»
+  Обрати доданий документ
+
+
+Провести поточний документ
+  Отримати номер доданого документу
+  Натиснути Кнопку  Провести
+  Перевірити проведення документу
+
+
+Відмінення проведення документу
+  Натиснути кнопку  Отменить проведение (Alt+Left)
+  Перевірити відміну проведення
+
+
+Видалення документу
+  Натиснути кнопку  Удалить (F8)
+  Натиснути кнопку форми  Удалить
+  Перевірити видалення документу
 
 
 
@@ -130,3 +149,39 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   ...  //td[contains(@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "rowselected")]/td[2]
   ${text}  Get Text  ${active_row_selector}
   Should Be True  '${text}' == '${status}'
+
+
+Обрати режим формування
+  [Arguments]  ${mode}
+  ${status}  Run Keyword And Return Status  Wait Until Page Contains Element  //span[contains(text(), '${mode}')]  2
+  Run Keyword If  ${status} == ${True}  Run Keywords
+  ...  Click Element  //span[contains(text(), '${mode}')]
+  ...  AND  Дочекатись загрузки сторінки (WB)
+
+Перевірити проведення документу
+  Дочекатись загрузки сторінки (MB)
+  Перевірити що стадія поточного документу  Проведен
+  Перевірити відсутність кнопки  Провести (Alt+Right)
+
+
+Перевірити відміну проведення
+  Дочекатись загрузки сторінки (MB)
+  Перевірити що стадія поточного документу  Ввод
+  Перевірити відсутність кнопки  Отменить проведение (Alt+Left)
+  Page Should Contain Element  //*[@title="Провести (Alt+Right)"]
+
+
+Перевірити видалення документу
+  Підрахувати поточну кількість документів
+  Should Be True  ${current_documents_quantity} == ${initial_documents_quantity}
+  ${dock_number}  Get Text  ${active_row_selector}/following-sibling::*[3]
+  Should Be True  ${added_dock_number} != ${dock_number}
+
+
+Обрати доданий документ
+  Click Element  ${active_row_selector}
+
+
+Отримати номер доданого документу
+  ${current_dock number}  Get Text  ${active_row_selector}/following-sibling::*[3]
+  Set Global Variable  ${added_dock_number}   ${current_dock number}

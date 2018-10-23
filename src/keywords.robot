@@ -85,7 +85,7 @@ Check Prev Test Status
 
 Авторизуватися MBTEST_ALL
   [Arguments]  ${login}  ${password}=None
-  Wait Until Page Contains  Вход в систему  30
+  Wait Until Page Contains  Вход в систему  60
   Вибрати користувача  ${login}
   Ввести пароль  ${password}
   Натиснути кнопку вхід
@@ -124,120 +124,6 @@ Check Prev Test Status
   Run Keyword If  "${status}" == "PASS"  Run Keyword And Ignore Error  Wait Until Element Is Not Visible  ${loading}  120
 
 
-Відкрити розділ довідники
-  Wait Until Page Contains Element  xpath=//div[@class="TreeViewContainer "]
-  Click Element  ${catalogs}
-  Wait Until Page Contains Element  xpath=//div[@class="menulistview-header"]//*[contains(text(), 'Справочники')]
-
-
-Відкрити потрібний довідник
-  [Arguments]  ${catalog}
-  Click Element  xpath=//*[contains(@class, 'menulistitem')]//*[contains(text(), '${catalog}')]
-  Дочекатись загрузки сторінки (МВ)
-
-
-Натиснути "Добавить" в головному меню
-  Click Element  ${add_in_main_menu}
-  Дочекатись Загрузки Сторінки (МВ)
-  Wait Until Page Contains  Добавление
-
-
-Відкрити закладку "Классификатор ресурсов (весь)"
-  Wait Until Keyword Succeeds  30  3  Click Element  xpath=//div[contains(text(), 'Классификатор ресурсов (весь)')]
-  Дочекатись загрузки сторінки (МВ)
-  ${status}  Run Keyword And Return Status  Wait Until Element Is Visible  xpath=//*[contains(text(), 'Классификатор ресурсов (весь)')]/ancestor::div[contains(@class, 'active')]  30s
-  Run Keyword If  '${status}' == 'True'
-  ...  No Operation
-  ...  ELSE  Відкрити закладку "Классификатор ресурсов (весь)"
-
-
-Відкрити вкладку "Экономика (бух.учет)"
-  Click Element  xpath=(//*[contains(text(), 'Экономика(бух.учет)')])[1]
-  ${status}  Run Keyword And Return Status  Wait Until Element Is Visible  xpath=(//*[contains(text(), 'Экономика(бух.учет)')])[2]  30s
-  Run Keyword If  '${status}' == 'True'
-  ...  No Operation
-  ...  ELSE  Click Element  xpath=(//*[contains(text(), 'Экономика(бух.учет)')])[1]
-
-
-Змінити значення поля "Счет хранения" на
-  [Arguments]  ${text}
-  Змінити текст поля "Счет хранения"  ${text}
-
-
-Змінити текст поля "Счет хранения"
-  [Arguments]  ${text}
-  Wait Until Keyword Succeeds  30s  3s  Input Text  xpath=//div[@data-name="BS"]//input[1]  ${text}
-  Press Key  xpath=//div[@data-name="BS"]//input[1]  \\13
-  Дочекатись Загрузки Сторінки (МВ)
-
-
-Перевірити відповідність даних після зміни поля "Счет хранения"
-  ${analytics}  Create List  Контрагенты  Договоры  Документы
-  ${len_parent}  Get Element Count  xpath=//*[@data-name="ANALYTICS_STORAGE"]//div[contains(text(), 'Аналитика')]/ancestor::td/preceding-sibling::*
-  ${len_parent}  Evaluate  int(${len_parent}) + 1
-  ${list}  Create List
-  :FOR  ${i}  IN RANGE  ${len_parent}
-  \  ${i}  Evaluate  int(${i}) + 1
-  \  ${value}  Get Text  xpath=((//*[@data-name="ANALYTICS_STORAGE"]//tbody)[2]/tr[@class]//td[${len_parent}])[${i}]
-  \  Append To List  ${list}  ${value}
-  log  ${list}
-  Should Be Equal  ${analytics}  ${list}
-
-
-Змінити значення поля "Контрагенты" на
-  [Arguments]  ${text}
-  ${field}  Set Variable  xpath=//td[contains(text(), 'Контрагенты')]/following-sibling::td
-  ${input_field}  Set Variable  xpath=//td[contains(text(), 'Контрагенты')]/following-sibling::td//input
-  Click Element  ${field}
-  Дочекатись загрузки сторінки (МВ)
-  Click Element  ${field}
-  Input Text  ${input_field}  ${text}
-  Press Key  ${input_field}  \\13
-  Дочекатись Загрузки Сторінки (МВ)
-
-
-Перевірити відповідність даних після зміни поля "Контрагенты"
-  ${title}  Get Text  xpath=//td[contains(text(), 'Контрагенты')]/following-sibling::td
-  Should Be Equal  ${title}  Львів ТОВ "Лілія" (83)
-
-
-Перейти в поле
-  [Arguments]  ${title}
-  ${field}  Set Variable  xpath=//td[contains(text(), '${title}')]/following-sibling::td
-  Click Element  ${field}
-  Sleep  1s
-  Click Element  ${field}
-
-
-Натиснути "Выбор из справочника F10" в полі
-  [Arguments]  ${title}
-  Wait Until Keyword Succeeds  30s  3s  Click Element  xpath=//td[contains(text(), '${title}')]/following-sibling::td//*[contains(@title, 'Выбор из спра')]
-
-
-Натиснути "Поиск по фильтру" в полі
-  [Arguments]  ${title}
-  Wait Until Keyword Succeeds  30s  3s  Click Element  xpath=//td[contains(text(), '${title}')]/following-sibling::td//*[contains(@title, 'Поиск элементов')]
-
-
-Перевірити в "Картотека договоров" наявність договорів з ID
-  [Arguments]  ${arg1}  ${arg2}
-  Wait Until Page Contains  Картотека договоров  30
-  Wait Until Element Is Visible  xpath=//*[contains(@title, 'Уник.номер')]/ancestor::*[contains(@class, 'gridbox-main')]//*[contains(text(), '${arg1}')]
-  Wait Until Element Is Visible  xpath=//*[contains(@title, 'Уник.номер')]/ancestor::*[contains(@class, 'gridbox-main')]//*[contains(text(), '${arg2}')]
-
-
-Закрити вікно "Картотека договоров"
-  Click Element  xpath=//*[@alt='Close'][1]
-  Дочекатись Загрузки Сторінки (МВ)
-  Wait Until Page Contains  Добавление
-
-
-Перевірити в "Поиск по фильтру" наявність договорів з ID
-  [Arguments]  ${arg1}  ${arg2}
-  Wait Until Element Is Visible  xpath=(//*[contains(text(), 'Уник.номер')]/ancestor::*[@class="ade-list-back"]//*[contains(text(), '${arg1}')])[1]
-  Wait Until Element Is Visible  xpath=(//*[contains(text(), 'Уник.номер')]/ancestor::*[@class="ade-list-back"]//*[contains(text(), '${arg2}')])[1]
-
-
 Scroll Page To Element XPATH
   [Arguments]  ${xpath}
   Run Keyword And Ignore Error  Execute JavaScript  document.evaluate('${xpath.replace("xpath=", "")}', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});
@@ -270,9 +156,8 @@ Scroll Page To Element XPATH
 
 Натиснути кнопку
   [Arguments]  ${button_name}
-  Wait Until Page Contains Element  //*[@title='${button_name}']  30
-  Wait Until Element Is Visible  //*[@title='${button_name}']  30
-  Click Element  //*[@title='${button_name}']
+  Wait Until Element Is Visible  //*[contains(@title,'${button_name}')]  30
+  Click Element  //*[contains(@title,'${button_name}')]
   Дочекатись загрузки сторінки (MB)
 
 
@@ -287,10 +172,7 @@ Scroll Page To Element XPATH
   Wait Until Element Is Visible  ${selector}  30
   Sleep  .5
   Click Element  ${selector}
-  #Sleep  5
   Дочекатись загрузки сторінки (MB)
-  #${status}  Run Keyword And Return Status  Wait Until Element Is Not Visible    ${selector}
-  #Run Keyword If  ${status} == ${False}  Натиснути кнопку форми  ${button}
 
 
 Перевірити що статус поточного документу
