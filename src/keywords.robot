@@ -183,3 +183,9 @@ Scroll Page To Element XPATH
   Should Be True  '${text}' == '${status}'
 
 
+Input Type Flex
+  [Arguments]    ${locator}    ${text}
+  [Documentation]    write text letter by letter
+  ${items}    Get Length    ${text}
+  : FOR    ${item}    IN RANGE    ${items}
+  \    Press Key    ${locator}    ${text[${item}]}
