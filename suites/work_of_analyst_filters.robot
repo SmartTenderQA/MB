@@ -98,7 +98,8 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Press Key  xpath=//div[@data-name="BS"]//input[1]  \\13
   Sleep  1
   Дочекатись Загрузки Сторінки (МВ)
-
+  ${new value}  Get Element Attribute  xpath=//div[@data-name="BS"]//input[1]  value
+  Run Keyword If  "${text}" != "${new value}"  Змінити текст поля "Счет хранения"  ${text}
 
 Перевірити відповідність даних після зміни поля "Счет хранения"
   ${analytics}  Create List  Контрагенты  Договоры  Документы
