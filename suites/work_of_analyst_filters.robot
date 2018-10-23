@@ -96,7 +96,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Wait Until Keyword Succeeds  30s  3s  Input Text  xpath=//div[@data-name="BS"]//input[1]  ${text}
   Sleep  .5
   Press Key  xpath=//div[@data-name="BS"]//input[1]  \\13
-  Sllep  1
+  Sleep  1
   Дочекатись Загрузки Сторінки (МВ)
 
 
