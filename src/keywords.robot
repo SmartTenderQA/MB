@@ -157,7 +157,7 @@ Scroll Page To Element XPATH
 Натиснути кнопку
   [Arguments]  ${button_name}
   Wait Until Element Is Visible  //*[contains(@title,'${button_name}')]  30
-  Click Element  //*[contains(@title,'${button_name}')]
+  Wait Until Keyword Succeeds  10  2  Click Element  //*[contains(@title,'${button_name}')]
   Дочекатись загрузки сторінки (MB)
 
 
