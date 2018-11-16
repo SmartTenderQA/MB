@@ -109,7 +109,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   ${responsible_dropdown_selector}  Set Variable
   ...  //span[contains(., "Ответственный")]/following-sibling::div//td[contains(@title, "Поиск элементов по введенному")]
   ${cell_selector}  Set Variable  //div[contains(@class, "combo_cell_text")]
-  Click Element  ${responsible_selector}
+  Wait Until Keyword Succeeds  15  3  Click Element  ${responsible_selector}
   Wait Until Element Is Visible  ${responsible_dropdown_selector}  15
   Sleep  .5
   Click Element  ${responsible_dropdown_selector}
