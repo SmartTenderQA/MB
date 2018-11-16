@@ -23,7 +23,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 Запустити функцію "Реализация товаров и услуг"
   Обрати категорію меню  Продажи
-  Обрати категорію меню  Документы
+#  Обрати категорію меню  Документы
   Обрати категорію підменю  Реализация товаров и услуг
   Перевірити найменування інтерфейсу "Реализация товаров и услуг"
 
@@ -94,14 +94,14 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   ${contractor_selector}  Set Variable  //span[contains(., "Контрагент")]/following-sibling::div//input
   Input Text  ${contractor_selector}  13356
   Press Key  ${contractor_selector}  \\09
-  Sleep  2
+   Дочекатись загрузки сторінки (МВ)
 
 
 Заповнити поле Договір
   ${agreement_selector}  Set Variable  //span[contains(., "Договор")]/following-sibling::div//input
   Input Text  ${agreement_selector}  *
   Press Key  ${agreement_selector}  \\09
-  Sleep  2
+  Sleep  .5
 
 
 Вибрати відповідального

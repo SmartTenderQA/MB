@@ -149,8 +149,8 @@ Scroll Page To Element XPATH
 
 Обрати категорію підменю
   [Arguments]  ${item}
-  Wait Until Page Contains Element   //label[contains(@style, "vertical-align") and contains(text(), '${item}')]  30
-  Double Click Element  //label[contains(@style, "vertical-align") and contains(text(), '${item}')]
+  Wait Until Page Contains Element   //*[@class="menulistitem-title " and contains(text(), "${item}")]  30
+  Double Click Element  //*[@class="menulistitem-title " and contains(text(), "${item}")]
   Дочекатись загрузки сторінки (MB)
 
 
