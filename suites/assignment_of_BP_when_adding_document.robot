@@ -115,7 +115,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Input Text  ${selector}  ${text}
   Sleep  .5
   Press Key  ${selector}  \\09
-  Sleep  .5
+  Дочекатись загрузки сторінки (MB)
 
 
 Заповнити код
