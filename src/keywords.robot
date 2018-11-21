@@ -17,7 +17,7 @@ ${browser}                            chrome
 ...                                   BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
 ${loading}                            xpath=//table[contains(@id, 'LoadingPanel')]
 ${catalogs}                           xpath=//div[contains(@class, 'TreeViewContainer')]//*[contains(text(), 'Справочники')]
-${add_in_main_menu}                   xpath=(//*[contains(@class, 'dxr-groupList')])[1]//*[contains(text(), 'Добавить')]
+${add_in_main_menu}                   xpath=//*[@title="Добавить (F7)"]
 ${login_field}                        xpath=//*[@data-name="Login"]//input[not(@type="hidden")]
 ${pass_field}                         xpath=//*[@data-name="Password"]//input[not(@type='hidden')]
 
