@@ -95,8 +95,11 @@ Check Prev Test Status
 Вибрати користувача
   [Arguments]  ${login}
   Input Text  ${login_field}  ${login}
+  ${check}  Get Element Attribute  ${login_field}  value
+  ${status}  Run Keyword And Return Status  Should Be Equal  ${check}  ${login}
   Press Key  ${login_field}  \\13
   Sleep  .5
+  Run Keyword If  ${status} == ${False}  Вибрати користувача  ${login}
 
 Ввести пароль
   [Arguments]  ${password}
@@ -121,7 +124,7 @@ Check Prev Test Status
 
 Дочекатись загрузки сторінки (МВ)
   ${status}  ${message}  Run Keyword And Ignore Error  Wait Until Element Is Visible  ${loading}  5
-  Run Keyword If  "${status}" == "PASS"  Run Keyword And Ignore Error  Wait Until Element Is Not Visible  ${loading}  120
+  Run Keyword If  "${status}" == "PASS"  Run Keyword And Ignore Error  Wait Until Element Is Not Visible  ${loading}  180
 
 
 Scroll Page To Element XPATH
