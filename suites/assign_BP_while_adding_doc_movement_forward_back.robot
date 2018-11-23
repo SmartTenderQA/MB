@@ -112,8 +112,10 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Wait Until Keyword Succeeds  15  3  Click Element  ${responsible_selector}
   Wait Until Element Is Visible  ${responsible_dropdown_selector}  15
   Sleep  .5
-  Click Element  ${responsible_dropdown_selector}
-  Wait Until Element Is Visible  ${cell_selector}  15
+  :FOR  ${i}  IN RANGE  10
+  \  Wait Until Keyword Succeeds  16  2  Click Element  ${responsible_dropdown_selector}
+  \  ${status}  Run Keyword And Return Status  Wait Until Element Is Visible  ${cell_selector}
+  \  Exit For Loop If  ${status} == ${True}
   Sleep  2
   Click Element  ${cell_selector}
   Sleep  1
@@ -174,9 +176,11 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 Ввести код
   ${code_selector}  Set Variable  (//td[contains(@class, "editable")])//input
   Wait Until Element Is Visible  (//td[@class="cellselected"])[3]  30
-  Click Element  (//td[@class="cellselected"])[3]
-  Sleep  1
-  Wait Until Element Is Visible  ${code_selector}  30
+  :FOR  ${i}  IN RANGE  10
+  \  Click Element  (//td[@class="cellselected"])[3]
+  \  Sleep  1
+  \  ${status}  Run Keyword And Return Status  Wait Until Element Is Visible  ${code_selector}
+  \  Exit For Loop If  ${status} == ${true}
   Wait Until Element Is Enabled  ${code_selector}  30
   Input Text  ${code_selector}  D0201
   Press Key  ${code_selector}  \\09
