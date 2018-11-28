@@ -94,12 +94,14 @@ Check Prev Test Status
 
 Вибрати користувача
   [Arguments]  ${login}
+  Clear Element Text  ${login_field}
   Input Text  ${login_field}  ${login}
   ${check}  Get Element Attribute  ${login_field}  value
   ${status}  Run Keyword And Return Status  Should Be Equal  ${check}  ${login}
+  Sleep  1
   Press Key  ${login_field}  \\13
-  Sleep  .5
   Run Keyword If  ${status} == ${False}  Вибрати користувача  ${login}
+
 
 Ввести пароль
   [Arguments]  ${password}
