@@ -122,8 +122,10 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   [Arguments]  ${field}  ${value}
   ${selector}  Set Variable  xpath=(//*[contains(text(), "${field}")]/following-sibling::td)[2]
   Click Element  ${selector}
+  Wait Until Element Is Not Visible  //div[@id="adorner"]
   Sleep  .5
   Click Element  ${selector}
+  Wait Until Element Is Not Visible  //div[@id="adorner"]
   Sleep  .5
   Input Text  ${selector}//input  ${value}
 
