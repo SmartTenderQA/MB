@@ -96,6 +96,7 @@ Check Prev Test Status
   [Arguments]  ${login}
   Clear Element Text  ${login_field}
   Input Text  ${login_field}  ${login}
+  Sleep  .5
   ${check}  Get Element Attribute  ${login_field}  value
   ${status}  Run Keyword And Return Status  Should Be Equal  ${check}  ${login}
   Sleep  1
