@@ -8,7 +8,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 # команда для запуска через консоль
-# robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHGOVA2 suites/assignment_of_BP_when_adding_document.robot
+# robot -L TRACE:INFO -A suites/arguments.txt -v capability:chrome -v env:BUHGOVA2 -v hub:None suites/assignment_of_BP_when_adding_document.robot
 *** Test Cases ***
 Відкрити сторінку MB та авторизуватись
   Відкрити сторінку MB
@@ -176,7 +176,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 Перевірити видалення документу
   Підрахувати поточну кількість документів
   Should Be True  ${current_documents_quantity} == ${initial_documents_quantity}
-  ${dock_number}  Get Text  ${active_row_selector}/following-sibling::*[3]
+  ${dock_number}  Run Keyword If  ${initial_documents_quantity} != 0  Get Text  ${active_row_selector}/following-sibling::*[3]
   Should Be True  ${added_dock_number} != ${dock_number}
 
 
