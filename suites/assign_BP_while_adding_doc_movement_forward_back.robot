@@ -58,7 +58,8 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 Проведення документу
   Отримати номер доданого документу
   Натиснути кнопку  Провести (Alt+Right)
-  Перевірити проведення документу
+  ${status}  Run Keyword And Return Status  Перевірити проведення документу
+  Run Keyword If  ${status} == ${False}  Натиснути кнопку  Провести (Alt+Right)
 
 
 Відмінення проведення документу
