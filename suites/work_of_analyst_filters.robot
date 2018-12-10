@@ -31,6 +31,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 Аналітика. Робота з полем "Контрагенты"
+  Run Keyword And Ignore Error  Закрити вспливаюче повідомлення якщо необхідно
   Змінити значення поля "Контрагенты" на  ТОВ "Лілія"
   Перевірити відповідність даних після зміни поля "Контрагенты"
 
@@ -168,3 +169,12 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   [Arguments]  ${arg1}  ${arg2}
   Wait Until Element Is Visible  xpath=(//*[contains(text(), 'Уник.номер')]/ancestor::*[@class="ade-list-back"]//*[contains(text(), '${arg1}')])[1]
   Wait Until Element Is Visible  xpath=(//*[contains(text(), 'Уник.номер')]/ancestor::*[@class="ade-list-back"]//*[contains(text(), '${arg2}')])[1]
+
+
+Закрити вспливаюче повідомлення якщо необхідно
+  ${notification}  Set Variable  //*[@class="instantMessage"]
+  ${close_btn}  Set Variable  //*[@class="instantMessageClose"]
+  Wait Until Element Is Visible  ${notification}
+  Mouse Over  ${notification}
+  Wait Until Element Is Visible  ${close_btn}
+  Click Element  ${close_btn}
