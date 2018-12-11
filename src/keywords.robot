@@ -169,7 +169,17 @@ Scroll Page To Element XPATH
 
 Перевірити відсутність кнопки
   [Arguments]  ${button_name}
-  Page Should Not Contain Element  //*[@title='${button_name}']
+  ${status}  Run Keyword And Return Status  Page Should Not Contain Element  //*[@title='${button_name}']
+  Run Keyword If  ${Status} == ${False}  Натиснути кнопку ще раз  ${button_name}
+
+
+Натиснути кнопку ще раз  ${button_name}
+  [Arguments]  ${button_name}
+  :FOR  ${i}  IN RANGE  10
+  \  Run Keyword And Ignore Error  Click Element  //*[@title='${button_name}']
+  \  Sleep  2
+  \  ${status}  Run Keyword And Return Status  Page Should Not Contain Element  //*[@title='${button_name}']
+  \  Exit For Loop If  ${status} == ${true}
 
 
 Натиснути кнопку форми
