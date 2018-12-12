@@ -32,7 +32,6 @@ Suite Precondition
   ...  Wait Until Element Is Visible  //span[contains(text(), 'Вибір')]  60
   ...  AND  Дочекатись загрузки сторінки (МВ)
   ...  AND  Click Element  //span[contains(text(), 'Вибір')]
-  ...  AND  Wait Until Element Is Not Visible  //span[contains(text(), 'Вибір')]  180
   ...  AND  Дочекатись загрузки сторінки (МВ)
 
 
