@@ -14,6 +14,7 @@ ${cpmb_start_page}           http://192.168.1.205/wsmbdemo_all/client
 
 *** Test Cases ***
 Запуск проекта MASTER
+  Run Keyword And Ignore Error  Закрити привітання с днем народження
   Натиснути адміністрування
   Натиснути Користувачі та групи
   Перевірити відкриту сторінку
@@ -102,3 +103,10 @@ Test Postcondition
 Перевірити відкриту сторінку
   Element Should Be Visible  //*[@data-placeid="TBN"]//td[text()="Користувачi"]
   Element Should Be Visible  //*[@class="dx-vam" and contains(text(), "РОЗРОБНИК")]
+
+
+Закрити привітання с днем народження
+#актуально 12.12
+  Дочекатись загрузки сторінки (МВ)
+  Wait Until Page Contains Element  //span[text()="Продовжити роботу"]
+  Click Element  //span[text()="Продовжити роботу"]
