@@ -205,3 +205,11 @@ Input Type Flex
   ${items}    Get Length    ${text}
   : FOR    ${item}    IN RANGE    ${items}
   \    Press Key    ${locator}    ${text[${item}]}
+
+
+Закрити привітання с днем народження
+#актуально 12.12
+  Дочекатись загрузки сторінки (МВ)
+  Wait Until Page Contains Element  //div[@id="pcModalMode_HCB-1"]
+  Click Element  //div[@id="pcModalMode_HCB-1"]
+  Дочекатись загрузки сторінки (МВ)
