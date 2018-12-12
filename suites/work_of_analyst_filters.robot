@@ -40,6 +40,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
   Перейти в поле  Договоры
   Натиснути "Выбор из справочника F10" в полі  Договоры
   Перевірити в "Картотека договоров" наявність договорів з ID  53  54
+  Run Keyword And Ignore Error  Закрити вспливаюче повідомлення якщо необхідно
   Закрити вікно "Картотека договоров"
 
 
@@ -55,7 +56,9 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 Відкрити розділ довідники
   Wait Until Page Contains Element  xpath=//div[@class="TreeViewContainer "]
   Click Element  ${catalogs}
-  Wait Until Page Contains Element  xpath=//div[@class="menulistview-header"]//*[contains(text(), 'Справочники')]
+  Дочекатись загрузки сторінки (MB)
+  ${status}  Run Keyword And Return Status  Page Should Contain Element  xpath=//div[@class="menulistview-header"]//*[contains(text(), 'Справочники')]
+  Run Keyword If  ${status} == ${false}  Відкрити розділ довідники
 
 
 Відкрити потрібний довідник
