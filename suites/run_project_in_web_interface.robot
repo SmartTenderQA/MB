@@ -29,7 +29,8 @@ Suite Precondition
   Дочекатись загрузки сторінки (МВ)
   Авторизуватися
   Run Keyword If  "${start_from}" == "webclient"  Run Keywords
-  ...  Wait Until Element Is Visible  //span[contains(text(), 'Вибір')]  60
+  ...  Дочекатись загрузки сторінки (МВ)
+  ...  AND  Wait Until Element Is Visible  //span[contains(text(), 'Вибір')]  10
   ...  AND  Дочекатись загрузки сторінки (МВ)
   ...  AND  Click Element  //span[contains(text(), 'Вибір')]
   ...  AND  Дочекатись загрузки сторінки (МВ)

@@ -144,7 +144,7 @@ Scroll Page To Element XPATH
 
 Натиснути кнопку "Выбор"
   Wait Until Page Contains Element  //*[contains(@class, "Text") and contains(text(), "Выбор")]  30
-  Click Element  //*[contains(@class, "Text") and contains(text(), "Выбор")]
+  Wait Until Keyword Succeeds  15  3  Click Element  //*[contains(@class, "Text") and contains(text(), "Выбор")]
 
 
 Обрати категорію меню
