@@ -8,7 +8,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 # команда для запуска через консоль
-# robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHETLA2 suites/assign_BP_while_adding_doc_movement_forward_back.robot
+# robot -L TRACE:INFO -A suites/arguments.txt -v capability:chrome -v env:BUHETLA2 -v hub:None suites/assign_BP_while_adding_doc_movement_forward_back.robot
 *** Test Cases ***
 Відкрити сторінку MB та авторизуватись
   Відкрити сторінку MB
@@ -146,7 +146,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 Ввести дані в поле "Код ТМЦ"
-  ${TMC_code_selector}  Set Variable  (//table[@class="dhxcombo_outer"])[3]//input
+  ${TMC_code_selector}  Set Variable  (//div[@data-name="KMAT"])//input
   Wait Until Page Contains Element  ${TMC_code_selector}  30
   Input Text  ${TMC_code_selector}  200200000000016
   Sleep  2
