@@ -68,7 +68,7 @@ Test Teardown  Run Keyword If Test Failed  Capture Page Screenshot
 
 
 Натиснути "Добавить" в головному меню
-  Click Element  (//span[text()="ГЛАВНАЯ"])[2]
+  Click Element  //a[contains(@id, "B_TC_T1T")]
   Wait Until Element Is Visible  ${add_in_main_menu}
   Click Element  ${add_in_main_menu}
   Дочекатись Загрузки Сторінки (МВ)
