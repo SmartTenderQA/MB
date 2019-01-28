@@ -28,6 +28,18 @@ ${platform}                           ANY
 
 
 *** Keywords ***
+
+
+
+
+
+
+
+
+
+
+
+
 Preconditions
   ${login}  ${password}  Отримати дані проекту  ${env}
   Open Browser  ${url.${env}}  ${browser}  ${alies}  ${hub}  #platformName:${platform}
@@ -38,9 +50,6 @@ Postcondition
   Close All Browsers
 
 
-Check Prev Test Status
-  ${status}  Set Variable  ${PREV TEST STATUS}
-  Run Keyword If  '${status}' == 'FAIL'  Fatal Error  Ой, щось пішло не так! Вимушена зупинка тесту.
 
 
 Отримати дані проекту
