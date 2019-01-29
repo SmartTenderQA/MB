@@ -10,8 +10,10 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 
 *** Keywords ***
 Авторизуватися
-	[Arguments]  ${user_name}  ${password}=''
-	authentication.Вибрати користувача  ${user_name}
+	[Arguments]  ${user_name}
+	${login}  src.Отримати дані користувача по полю  ${user_name}  login
+	authentication.Вибрати користувача  ${login}
+	${password}  src.Отримати дані користувача по полю  ${user_name}  password
 	authentication.Ввести пароль  ${password}
 	authentication.Натиснути "Увійти"
 	Run Keyword And Ignore Error  authentication.Підтвердити вибір підприємства
@@ -26,7 +28,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	[Arguments]  ${user_name}
 	Page Should Contain Element  ${choose user btn}
 	Click Element  ${choose user btn}
-	${user locator}  Set Variable  //td[contains(text(), "${user_name}")]
+	${user locator}  Set Variable  //td[text()="${user_name}"]
 	Wait Until Element Is Visible  ${user locator}
 	Click Element  ${user locator}
 
@@ -38,7 +40,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 
 
 Натиснути "Увійти"
-	Click Element  ${login btn}
+	Wait Until Keyword Succeeds  10s  2s  Click Element  ${login btn}
 	Wait Until Element Is Not Visible  ${login btn}  90
 
 

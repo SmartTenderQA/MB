@@ -41,6 +41,9 @@ ${hub}                                http://autotest.it.ua:4444/wd/hub
 ...									CPMB=http://192.168.1.205/wsmbdemo_all/client
 ...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/(S(zba2cyntynq2odbobgibdsvn))/?promptLogin=1&proj=K_BUHGOVA2_UK&dbg=1&iconset=ms&ClientDevice=Desktop&isLandscape=true&tz=2
 
+${users_variables_path1}   /home/testadm/MB_users_variables.py
+${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
+
 
 *** Keywords ***
 Open Browser In Grid
@@ -56,6 +59,15 @@ Open Browser In Grid
 Check Prev Test Status
   ${status}  Set Variable  ${PREV TEST STATUS}
   Run Keyword If  '${status}' == 'FAIL'  Fatal Error  Ой, щось пішло не так! Вимушена зупинка тесту.
+
+
+Отримати дані користувача по полю
+	[Arguments]  ${user}  ${key}
+	${status}  Run Keyword And Return Status  Import Variables  ${users_variables_path1}
+	Run Keyword If  ${status} == ${False}  Import Variables  ${users_variables_path2}
+	${a}  Create Dictionary  a  ${users_variables}
+	${users_variables}  Set Variable  ${a.a}
+	[Return]  ${users_variables.${user}.${key}}
 
 
 

@@ -9,8 +9,6 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 *** Variables ***
-&{user}
-...								BUHGOVA2=Главный бухгалтер
 
 
 #zapusk
@@ -57,7 +55,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  ${user.${env}}
+	authentication.Авторизуватися  ${env}
 
 
 Створити документ
