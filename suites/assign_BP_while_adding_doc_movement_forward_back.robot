@@ -11,7 +11,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 #zapusk
-#robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHETLA2 suites/assign_BP_while_adding_doc_movement_forward_back.robot
+#robot -L TRACE:INFO -d test_output -v browser:chrome -v env:BUHETLA2 suites/assign_BP_while_adding_doc_movement_forward_back.robot
 *** Test Cases ***
 Запустити функцію "Реализация товаров и услуг"
 	start_page.Натиснути "Продажі"

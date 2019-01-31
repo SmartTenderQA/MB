@@ -12,7 +12,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 #zapusk
-#robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHGOVA2 suites/assignment_of_BP_when_adding_document.robot
+#robot -L TRACE:INFO -d test_output -v browser:chrome -v env:BUHGOVA2 suites/assignment_of_BP_when_adding_document.robot
 *** Test Cases ***
 Запустити функцію "Оприходования ТМЦ"
 	start_page.Натиснути "Склад"

@@ -12,10 +12,10 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 #zapusk
-#robot --consolecolors on -L TRACE:INFO -A suites/arguments.txt -v env:WEBCLIENT -v browser:chrome suites/run_project_in_web_interface.robot
-#robot --consolecolors on -L TRACE:INFO -A suites/arguments.txt -v env:CPMB -v browser:chrome suites/run_project_in_web_interface.robot
-#robot --consolecolors on -L TRACE:INFO -A suites/arguments.txt -v env:WEBCLIENT -v browser:firefox suites/run_project_in_web_interface.robot
-#robot --consolecolors on -L TRACE:INFO -A suites/arguments.txt -v env:CPMB -v browser:firefox suites/run_project_in_web_interface.robot
+#robot --consolecolors on -L TRACE:INFO -d test_output -v env:WEBCLIENT -v browser:chrome suites/run_project_in_web_interface.robot
+#robot --consolecolors on -L TRACE:INFO -d test_output -v env:CPMB -v browser:chrome suites/run_project_in_web_interface.robot
+#robot --consolecolors on -L TRACE:INFO -d test_output -v env:WEBCLIENT -v browser:firefox suites/run_project_in_web_interface.robot
+#robot --consolecolors on -L TRACE:INFO -d test_output -v env:CPMB -v browser:firefox suites/run_project_in_web_interface.robot
 #
 *** Test Cases ***
 Запуск проекта MASTER

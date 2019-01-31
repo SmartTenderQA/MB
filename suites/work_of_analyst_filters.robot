@@ -13,7 +13,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 #zapusk
-#robot --consolecolors on -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:MBTEST_ALL suites/work_of_analyst_filters.robot
+#robot --consolecolors on -L TRACE:INFO -d test_output -v browser:chrome -v env:MBTEST_ALL suites/work_of_analyst_filters.robot
 *** Test Cases ***
 Відкрити довідник "Группы товаров, продукции и услуг"
 	start_page.Натиснути "Довідники"
