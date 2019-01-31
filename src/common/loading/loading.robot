@@ -3,7 +3,8 @@ Documentation			Пейджа для компонента загрузки  http:
 
 
 *** Variables ***
-${loading}                            xpath=//table[contains(@id, 'LoadingPanel')]
+${loading}							xpath=//table[contains(@id, 'LoadingPanel')]
+${loading rmd}						xpath=//div[contains(@class,'loading-panel')]
 
 
 *** Keywords ***
@@ -11,6 +12,8 @@ ${loading}                            xpath=//table[contains(@id, 'LoadingPanel'
 	Дочекатись закінчення загрузки сторінки по елементу  ${loading}
 
 
+Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки по елементу  ${loading rmd}
 
 
 

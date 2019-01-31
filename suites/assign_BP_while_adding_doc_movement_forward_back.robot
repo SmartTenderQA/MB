@@ -7,12 +7,11 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 ...  Capture Page Screenshot  AND
 ...  Log Location
 
-
 *** Variables ***
 
 
 #zapusk
-#robot -L TRACE:INFO -A suites/arguments.txt -v capability:chrome -v env:BUHETLA2 suites/assign_BP_while_adding_doc_movement_forward_back.robot
+#robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHETLA2 suites/assign_BP_while_adding_doc_movement_forward_back.robot
 *** Test Cases ***
 Запустити функцію "Реализация товаров и услуг"
 	start_page.Натиснути "Продажі"
@@ -24,7 +23,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	Set Global Variable  ${initial_documents_quantity}   ${quantity}
 	main_menu.Вибрати вкладку в головному меню за назвою  ГЛАВНАЯ
 	main_menu.Натиснути кнопку в головному меню за назвою  Добавить (F7)
-	sales.Перевірити вікно додавання документа в "Реестр документов"
+	sales.Перевірити що активна вкладка "Документ"
+	sales.Перевірити тип процессу за замовчуванням
 	Створити документ
 	${current_documents_quantity}  documents_register.Отримати кількість документів
 	documents_register.Переконатися що в реєстрі з'явився новий документ  ${initial_documents_quantity}  ${current_documents_quantity}

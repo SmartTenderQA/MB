@@ -12,11 +12,6 @@
 	Wait Until Page Contains Element  //td[contains (@valign, "top") and contains(text(), "Реестр документов")]  5
 
 
-Перевірити вікно додавання документа в "Реестр документов"
-	sales.Перевірити що активна вкладка "Документ"
-	sales.Перевірити тип процессу за замовчуванням
-
-
 Перевірити що активна вкладка "Документ"
 	Page Should Contain Element  xpath=//*[contains(@class, 'activeTab')]//*[text()='Документ']
 

@@ -12,7 +12,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 #zapusk
-#robot -L TRACE:INFO -A suites/arguments.txt -v capability:chrome -v env:BUHGOVA2 suites/assignment_of_BP_when_adding_document.robot
+#robot -L TRACE:INFO -A suites/arguments.txt -v browser:chrome -v env:BUHGOVA2 suites/assignment_of_BP_when_adding_document.robot
 *** Test Cases ***
 Запустити функцію "Оприходования ТМЦ"
 	start_page.Натиснути "Склад"
@@ -22,7 +22,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 Відкрити вікно додавання документа
 	main_menu.Вибрати вкладку в головному меню за назвою  ГЛАВНАЯ
 	main_menu.Натиснути кнопку в головному меню за назвою  Добавить (F7)
-	stock.Перевірити вікно додавання документа в "Реестр документов"
+	sales.Перевірити що активна вкладка "Документ"
+	sales.Перевірити тип процессу за замовчуванням
 
 
 Додати документ та перевірити успішність його створення
