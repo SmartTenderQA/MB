@@ -43,7 +43,9 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	Click Element  ${user locator}
 	${login is}  Get Element Attribute  //input[@type='text' and @autocomplete]  value
 	Run Keyword If  '${login is}' != '${login}'
-	...  authentication.Вибрати користувача  ${login}
+	...  Run Keywords
+	...  authentication.Вибрати користувача  ${login}		AND
+	...  Capture Page Screenshot
 
 
 Ввести пароль

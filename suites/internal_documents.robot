@@ -96,7 +96,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 Повернути документ адресату з вимогою змінити виконавця
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_co_performer_1
-	start_page_RMD.Натиснути "Завдання і документи"exit
+	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду/виконання/ознайомлення
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
 

@@ -35,7 +35,7 @@ Resource	pages_RMD/create_document_RMD/create_document_RMD.robot
 ${browser}							chrome
 ${platform}							ANY
 
-${hub}                                http://autotest.it.ua:4444/wd/hub
+${hub}								http://autotest.it.ua:4444/wd/hub
 
 &{url}
 ...									MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
