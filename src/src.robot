@@ -45,6 +45,7 @@ ${hub}								http://autotest.it.ua:4444/wd/hub
 ...									WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
 ...									CPMB=http://192.168.1.205/wsmbdemo_all/client
 ...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/(S(zba2cyntynq2odbobgibdsvn))/?promptLogin=1&proj=K_BUHGOVA2_UK&dbg=1&iconset=ms&ClientDevice=Desktop&isLandscape=true&tz=2&win=1
+...									MBDEMOGOV_DLP=http://cpmb/wsmbdemogov_dlp/clientRMD/?proj=it_UK
 
 #todo nuzhno ubrat` &win=1
 

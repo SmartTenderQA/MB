@@ -97,7 +97,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_co_performer_1
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду/виконання/ознайомлення
+	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
 
 
@@ -113,7 +113,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_executor_to_attention
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду/виконання/ознайомлення
+	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
 
 
@@ -121,7 +121,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_co_executor
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду/виконання/ознайомлення
+	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
 
 
