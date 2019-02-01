@@ -24,7 +24,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	main_menu.Вибрати вкладку в головному меню за назвою  ГЛАВНАЯ
 	main_menu.Натиснути кнопку в головному меню за назвою  Добавить (F7)
 	sales.Перевірити що активна вкладка "Документ"
-	sales.Перевірити тип процессу за замовчуванням
+	sales.Перевірити тип процессу за замовчуванням  Акт оказанных услуг _ACTOUTS  Акт оказанных услуг (_ACTOUTS)
 	Створити документ
 	${current_documents_quantity}  documents_register.Отримати кількість документів
 	documents_register.Переконатися що в реєстрі з'явився новий документ  ${initial_documents_quantity}  ${current_documents_quantity}

@@ -17,5 +17,6 @@
 
 
 Перевірити тип процессу за замовчуванням
+    [Arguments]  @{text}
 	${type}  Get Element Attribute  xpath=//*[@data-name="KDMT"]//input[@type="text"]  value
-	Should Contain Any  ${type}  Акт оказанных услуг _ACTOUTS  Акт оказанных услуг (_ACTOUTS)
+	Should Contain Any  ${type}  @{text}
