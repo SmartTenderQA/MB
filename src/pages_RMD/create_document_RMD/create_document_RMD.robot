@@ -17,6 +17,14 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 	Дочекатись закінчення загрузки сторінки RMD
 
 
+Ввести значення в поле з датою
+	[Arguments]  ${field_name}  ${text}
+	${field}  Set Variable  ${create doc field}//*[contains(@title,'${field_name}')]/preceding-sibling::*
+	${locator}  Set Variable  ${field}//input|${field}//textarea
+	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити поле з датою  ${locator}  ${text}
+	Дочекатись закінчення загрузки сторінки RMD
+
+
 Вибрати елемент з випадаючого списку
 	[Arguments]  ${field_name}  ${text}
 	${locator}  Set Variable  ${create doc field}//*[contains(@title,'${field_name}')]/preceding-sibling::*

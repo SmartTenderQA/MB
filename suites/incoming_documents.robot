@@ -60,7 +60,7 @@ Suite Precondition
 
 Заповнити поле "Дата вихідного документа"
 	${date}  Evaluate  '{:%d.%m.%Y}'.format(datetime.datetime.now())  datetime
-	create_document_RMD.Ввести значення в поле  Дата вихідного документа  ${date}
+	create_document_RMD.Ввести значення в поле з датою  Дата вихідного документа  ${date}
 	Set To Dictionary  ${data}  date  ${date}
 
 

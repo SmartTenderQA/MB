@@ -106,6 +106,18 @@ Check Prev Test Status
 	Should Be Equal As Strings  ${got}  ${text}
 
 
+Заповнити та перевірити поле з датою
+	[Arguments]  ${selector}  ${text}
+	Scroll Page To Element XPATH  ${selector}
+	Click Element  ${selector}
+	Sleep  .5
+	Run Keyword And Ignore Error  Clear input By JS  ${selector}
+	Input Text  ${selector}  ${text}
+	${got}  Get Element Attribute  ${selector}  value
+	Press Key  ${selector}  \\9
+	Should Be Equal As Strings  ${got}  ${text[:2]}.${text[3:5]}.${text[-4:]}
+
+
 Clear input By JS
     [Arguments]    ${xpath}
 	${xpath}  Set Variable  ${xpath.replace("'", '"')}
