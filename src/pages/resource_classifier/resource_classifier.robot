@@ -9,7 +9,7 @@ Documentation			Пейджа для сторінки "Групи товарів,
 Відкрити закладку за назвою
 	[Arguments]  ${tab_name}
 	${tab locator}  Set Variable  //*[@id='MainSted2PageControl_KSM_TC']//div[contains(text(), '${tab_name}')]
-	Click Element  ${tab locator}
+	Wait Until Keyword Succeeds  5  .5  Click Element  ${tab locator}
 	Дочекатись закінчення загрузки сторінки
 
 
