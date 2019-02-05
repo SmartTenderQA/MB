@@ -26,3 +26,13 @@ ${user panel}					//*[@class="user-account-panel "]
 Натиснути "Змінити користувача"
 	Click Element  ${user panel}//*[@id="ChangeUser"]
 	elements.Натиснути в повідомленні  Завершити роботу із системою і зареєструватися під іншим ім'ям?  Так
+
+
+Натиснути "Делеговані права"
+	[Arguments]  ${user_name}
+	Click Element  ${user panel}//*[@id='AddDelegateRigths']
+	${delegated rights}  Set Variable  //*[@class="uap-submenu"]
+	Wait Until Element Is Visible  ${delegated rights}
+	Click Element  ${delegated rights}//*[contains(text(),'${user_name}')]
+	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки

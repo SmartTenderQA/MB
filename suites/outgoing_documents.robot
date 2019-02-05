@@ -56,6 +56,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Проекти документів
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
+	Page Should Contain Element  //*[@class="frame-header"]//*[contains(text(),'Нова версія')]/..
+	tasks_RMD.Натиснути  На погодження
 	#todo rozkomentit` kak pofiks9t agent
 	#tasks_RMD.В панелі інструментів для фрейма документа натиснути  Нова версія
 
@@ -65,21 +67,25 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Авторизуватися  BUHGOVA2_RMD_executor_1
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
-	#todo rozkomentit` kak pofiks9t agent
-	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
-	#tasks_RMD.Натиснути  Погодити
+	tasks_RMD.Відкрити документ за змістом  ${data['text']}
+	tasks_RMD.Натиснути  Погодити
+	#todo тут будет ЕЦП
 
 
 Опрацювати документ помічником адресата
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_assistant_addressee
+	authentication.Змінити Делеговані права  TEST_Адресат
 	start_page_RMD.Натиснути "Завдання і документи"
+	tasks_RMD.Відкрити папку завдань і документів за назвою  На підпис
+	#todo
 
 
 Підписати документ адресатом
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  BUHGOVA2_RMD_addressee
 	start_page_RMD.Натиснути "Завдання і документи"
+	tasks_RMD.Відкрити папку завдань і документів за назвою  На підпис
 
 
 Відправити документ помічником адресата
