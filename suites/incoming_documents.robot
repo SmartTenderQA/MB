@@ -27,7 +27,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 *** Test Cases ***
 Додати "Вхідний документ"
-	authentication.Авторизуватися  BUHGOVA2_RMD_author
+	authentication.Авторизуватися  author
 	start_page_RMD.Натиснути "Завдання і документи"
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити випадаючий список "Додати документ"

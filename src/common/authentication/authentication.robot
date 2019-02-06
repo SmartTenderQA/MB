@@ -17,7 +17,8 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	${password}  src.Отримати дані користувача по полю  ${user_name}  password
 	authentication.Ввести пароль  ${password}
 	authentication.Натиснути "Увійти"
-	Run Keyword And Ignore Error  authentication.Підтвердити вибір підприємства
+	Run Keyword If  '${env}' == 'WEBCLIENT'
+	...  authentication.Підтвердити вибір підприємства
 
 
 Завершити сеанс

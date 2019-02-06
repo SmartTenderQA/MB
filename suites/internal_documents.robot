@@ -39,7 +39,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Погодити документ підлеглим виконавця
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_executor
+	authentication.Авторизуватися  subordinate_executor
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -48,7 +48,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Відправити документ на доопрацювання виконавцем 1-го рівня
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_executor_1
+	authentication.Авторизуватися  executor_1
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -56,7 +56,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Подати другу версію "Вихідного докуманта"
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_author
+	authentication.Авторизуватися  author
 	start_page_RMD.Натиснути "Завдання і документи"
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Проекти документів
@@ -65,7 +65,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Повторно погодити документ підлеглим виконавця
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_executor
+	authentication.Авторизуватися  subordinate_executor
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -74,7 +74,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Погодити документ виконавцем 1-го рівня
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_executor_1
+	authentication.Авторизуватися  executor_1
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -83,19 +83,19 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Опрацювати документ помічником адресата
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_assistant_addressee
+	authentication.Авторизуватися  assistant_addressee
 	start_page_RMD.Натиснути "Завдання і документи"
 
 
 Перевірити наявність документа адресатом
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_addressee
+	authentication.Авторизуватися  addressee
 	start_page_RMD.Натиснути "Завдання і документи"
 
 
 Повернути документ адресату з вимогою змінити виконавця
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_co_performer_1
+	authentication.Авторизуватися  co_performer_1
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -103,7 +103,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Змінити виконавця адресатом
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_addressee
+	authentication.Авторизуватися  addressee
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Розписані резолюції на підлеглих
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -111,7 +111,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Виконати завдання підлеглим виконавця до відома
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_executor_to_attention
+	authentication.Авторизуватися  subordinate_executor_to_attention
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -119,7 +119,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Виконати завдання підлеглим співвиконавця
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_subordinate_co_executor
+	authentication.Авторизуватися  subordinate_co_executor
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду
 	#tasks_RMD.Відкрити документ за змістом  ${data['text']}
@@ -127,13 +127,13 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 Виконати завдання адресатом
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_addressee
+	authentication.Авторизуватися  addressee
 	start_page_RMD.Натиснути "Завдання і документи"
 
 
 Перемістити документ в архів автором
 	authentication.Завершити сеанс
-	authentication.Авторизуватися  BUHGOVA2_RMD_author
+	authentication.Авторизуватися  author
 	start_page_RMD.Натиснути "Завдання і документи"
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На підтвердження
@@ -142,7 +142,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  BUHGOVA2_RMD_author
+	authentication.Авторизуватися  author
 	${data}  Create Dictionary
 	Set Global Variable  ${data}  ${data}
 
