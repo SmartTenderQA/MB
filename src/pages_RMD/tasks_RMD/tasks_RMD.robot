@@ -22,7 +22,16 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 
 Натиснути
 	[Arguments]  ${text}
-	${locator}  Set Variable  //*[contains(@title,'${text}')]//*[@class="split-button-container"]
+	${locator}  Set Variable  //*[contains(@title,'${text}')]/*[@class="split-button-container"]
+	elements.Дочекатися відображення елемента на сторінці  ${locator}
+	Click Element  ${locator}
+	Дочекатись закінчення загрузки сторінки RMD
+
+
+Натиснути кнопку
+	[Arguments]  ${text}
+	${locator}  Set Variable  //*[contains(@title,'${text}')]
+	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
 	Дочекатись закінчення загрузки сторінки RMD
 
@@ -39,10 +48,18 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	[Arguments]  ${text}
 	${locator}  Set Variable
 	...  //*[@class="objbox selectable objbox-scrollable"]//table[@class="obj"]/tbody/tr[contains(.,"${text}")]
-	Wait Until Element Is Visible  ${locator}  3
+	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
+	Sleep  .2
 	Click Element  ${locator}
 	Дочекатись закінчення загрузки сторінки RMD
+
+
+Перевірити статус задачі
+	[Arguments]  ${text}  ${status}
+	${locator}  Set Variable
+	...  //*[@class="objbox selectable objbox-scrollable"]//table[@class="obj"]/tbody/tr[contains(.,"${text}")]
+	Element Should Contain  ${locator}  ${status}  Oops! Статус задачі не ${status}
 
 
 Заповнити поле зауваження

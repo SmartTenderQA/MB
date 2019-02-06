@@ -6,6 +6,12 @@ ${notice message}					//*[@id="instant-messages-container"]
 
 
 *** Keywords ***
+Дочекатися відображення елемента на сторінці
+	[Documentation]  timeout=...s/...m
+	[Arguments]  ${locator}  ${timeout}=10s
+	Wait Until Keyword Succeeds  ${timeout}  .5  Element Should Be Visible  ${locator}
+
+
 Натиснути в валідаційному вікні
 	[Arguments]  ${window_name}  ${text}
 	${locator}  Set Variable  //*[@class="dhxwin_active menuget"]

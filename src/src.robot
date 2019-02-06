@@ -29,6 +29,7 @@ Resource	pages_RMD/main_menu_RMD/main_menu_RMD.robot
 Resource	pages_RMD/start_page_RMD/start_page_RMD.robot
 Resource	pages_RMD/tasks_RMD/tasks_RMD.robot
 Resource	pages_RMD/create_document_RMD/create_document_RMD.robot
+Resource	pages_RMD/EDS/EDS.robot
 
 
 *** Variables ***
@@ -44,10 +45,10 @@ ${hub}								http://autotest.it.ua:4444/wd/hub
 ...									BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
 ...									WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
 ...									CPMB=http://192.168.1.205/wsmbdemo_all/client
-...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/(S(zba2cyntynq2odbobgibdsvn))/?promptLogin=1&proj=K_BUHGOVA2_UK&dbg=1&iconset=ms&ClientDevice=Desktop&isLandscape=true&tz=2&win=1
+...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
 ...									MBDEMOGOV_DLP=http://cpmb/wsmbdemogov_dlp/clientRMD/?proj=it_UK
 
-#todo nuzhno ubrat` &win=1
+
 
 ${users_variables_path1}   /home/testadm/MB_users_variables.py
 ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
