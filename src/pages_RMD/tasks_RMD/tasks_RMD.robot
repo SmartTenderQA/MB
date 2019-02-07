@@ -50,8 +50,10 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	...  //*[@class="objbox selectable objbox-scrollable"]//table[@class="obj"]/tbody/tr[contains(.,"${text}")]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
+	Sleep  .15
 	Click Element  ${locator}
-	${status}  Run Keyword And Return Status  Wait Until Page Does Not Contain Element  ${locator}  5
+	Дочекатись закінчення загрузки сторінки RMD
+	${status}  Run Keyword And Return Status  Page Should Not Contain Element  ${locator}
 	Run Keyword If  ${status} == ${false}
 	...  tasks_RMD.Відкрити документ за змістом  ${text}
 
