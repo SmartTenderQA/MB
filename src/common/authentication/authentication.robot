@@ -24,6 +24,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 Завершити сеанс
 	Run Keyword And Ignore Error  elements.Закрити всі сповіщення (за необхідністю)
 	main_menu_RMD.Натиснути на іконку користувача
+	Run Keyword And Ignore Error  elements.Закрити всі сповіщення (за необхідністю)
 	main_menu_RMD.Натиснути "Змінити користувача"
 
 
