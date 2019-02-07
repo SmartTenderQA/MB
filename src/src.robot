@@ -59,6 +59,7 @@ Open Browser In Grid
 	[Arguments]  ${browser}=${browser}  ${platform}=${platform}
 	clear_test_output
 	Open Browser  ${url.${env}}  ${browser}  alies  ${hub}  platformName:${platform}
+	Run Keyword And Ignore Error  Handle Alert  action=DISMISS
 	Run Keyword If  '${hub}' != 'none' and '${hub}' != 'NONE'
 	...  Отримати та залогувати data_session
     Set Window Size  1280  1024

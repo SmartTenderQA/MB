@@ -36,7 +36,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Вибрати тип документа за назвою  Вихідні документи
 	Заповнити обов'язкові поля документа
 	create_document_RMD.Натиснути "Додати"
-	tasks_RMD.Натиснути  На погодження
+	tasks_RMD.Натиснути передати  На погодження
 	elements.Натиснути в валідаційному вікні  Погодження  OK
 
 
@@ -46,7 +46,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
-	tasks_RMD.Натиснути  Відхилити
+	tasks_RMD.Натиснути передати  Відхилити
 	Заповнити поле "Зауваження"
 	elements.Натиснути в валідаційному вікні  Зауваження  OK
 
@@ -59,7 +59,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Проекти документів
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
 	Page Should Contain Element  //*[@class="frame-header"]//*[contains(text(),'Нова версія')]/..
-	tasks_RMD.Натиснути  На погодження
+	tasks_RMD.Натиснути передати  На погодження
 
 
 Погодити документ виконавцем 1-го рівня
@@ -68,7 +68,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
-	tasks_RMD.Натиснути  Погодити
+	tasks_RMD.Натиснути передати  Погодити
 	EDS.Підписати ЄЦП
 
 
@@ -89,7 +89,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На підпис
 	tasks_RMD.Перевірити статус задачі  ${data['text']}  Опрацьовано помічником
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
-	tasks_RMD.Натиснути  Підписати
+	tasks_RMD.Натиснути передати  Підписати
 	EDS.Підписати ЄЦП
 
 
@@ -101,7 +101,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Друк та підпис
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
 	Номер та дата документа повинні відповідати шаблону
-	tasks_RMD.Натиснути  На відправку
+	tasks_RMD.Натиснути передати  На відправку
 
 
 Перемістити документ в архів автором
@@ -111,7 +111,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На відправку
 	tasks_RMD.Відкрити документ за змістом  ${data['text']}
-	tasks_RMD.Натиснути  В архів
+	tasks_RMD.Натиснути передати  В архів
 
 
 *** Keywords ***
