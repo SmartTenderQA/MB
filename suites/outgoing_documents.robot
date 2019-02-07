@@ -10,8 +10,10 @@ Metadata  Окружения
 ...  - chrome
 ...  - ff
 Metadata  Команда запуска
-...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v browser:chrome suites/outgoing_documents.robot
+...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v platform:WIN10 -v browser:chrome suites/outgoing_documents.robot
 ...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v browser:firefox suites/outgoing_documents.robot
+...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_DLP -v platform:WIN10 -v browser:chrome suites/outgoing_documents.robot
+...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_DLP -v browser:firefox suites/outgoing_documents.robot
 
 Resource  ../src/src.robot
 Suite Setup  Suite Precondition

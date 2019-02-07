@@ -8,6 +8,6 @@ Documentation			Пейджа для стартової сторінки, яка 
 *** Keywords ***
 Натиснути "Завдання і документи"
 	${tasks and docs btn}  Set Variable  //*[contains(@class,'splitter-panel')]//*[contains(text(),'Завдання і документи')]
-	Wait Until Element Is Visible  ${tasks and docs btn}  5
+	elements.Дочекатися відображення елемента на сторінці  ${tasks and docs btn}  15
 	Click Element  ${tasks and docs btn}
 	Дочекатись закінчення загрузки сторінки RMD

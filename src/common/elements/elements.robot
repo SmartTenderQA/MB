@@ -31,9 +31,9 @@ ${notice message}					//*[@id="instant-messages-container"]
 
 Закрити всі сповіщення (за необхідністю)
 	${notice close btn}  Set Variable  ${notice message}//i[contains(@class,'imcls') and not(@id)]
-	Wait Until Element Is Visible  ${notice message}
+	elements.Дочекатися відображення елемента на сторінці  ${notice message}
 	Click Element  ${notice message}
-	Wait Until Element Is Visible  ${notice close btn}  2
+	elements.Дочекатися відображення елемента на сторінці  ${notice close btn}
 	Click Element  ${notice close btn}
 	${page does not contains notice}  Run Keyword And Return Status
 	...  Run Keyword And Expect Error  *is not clickable*
