@@ -20,11 +20,22 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	Дочекатись закінчення загрузки сторінки RMD
 
 
-Натиснути
+Натиснути передати
 	[Arguments]  ${text}
 	${locator}  Set Variable  //*[contains(@title,'${text}')]/*[@class="split-button-container"]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
+	Дочекатись закінчення загрузки сторінки RMD
+
+
+Натиснути
+	[Arguments]  ${btn_name}  ${reason}
+	${btn locator}  Set Variable  //*[@title="${btn_name}"]/*[@class="sb-dd"]
+	elements.Дочекатися відображення елемента на сторінці  ${btn locator}
+	Click Element  ${btn locator}
+	${reason locator}  Set Variable  //*[@class="item-control-popup-menu"]//*[contains(text(),'${reason}')]
+	elements.Дочекатися відображення елемента на сторінці  ${reason locator}
+	Click Element  ${reason locator}
 	Дочекатись закінчення загрузки сторінки RMD
 
 
@@ -53,7 +64,7 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	Sleep  .2
 	Click Element  ${locator}
 	Дочекатись закінчення загрузки сторінки RMD
-	${status}  Run Keyword And Return Status  Page Should Not Contain Element  ${locator}
+	${status}  Run Keyword And Return Status  Page Should Not Contain Element  //*[@class="menu-item-text" and contains(.,'Мої завдання і документи')]
 	Run Keyword If  ${status} == ${false}
 	...  tasks_RMD.Відкрити документ за змістом  ${text}
 
@@ -88,4 +99,15 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	${panel locator}  Set Variable  //*[@class="frame-header"]
 	Wait Until Element Is Visible  ${panel locator}
 	Click Element  ${panel locator}//*[contains(text(),'${btn_name}')]/..
+	Дочекатись закінчення загрузки сторінки RMD
+
+
+Виконати дію для задачі
+	[Arguments]  ${task_text}  ${action}
+	${btn more locator}  Set Variable  //tr[contains(.,'Звідси колода ве') and @class]//i[@class="material-icons"]
+	elements.Дочекатися відображення елемента на сторінці  ${btn more locator}
+	Click Element  ${btn more locator}
+	${action locator}  Set Variable  //*[@class="sub_item_text" and contains(text(),'Зміна виконавця')]
+	elements.Дочекатися відображення елемента на сторінці  ${action locator}
+	Click Element  ${action locator}
 	Дочекатись закінчення загрузки сторінки RMD
