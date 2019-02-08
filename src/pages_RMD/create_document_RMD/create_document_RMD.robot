@@ -55,9 +55,10 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 
 
 Заповнити поле "Номер вихідного документа" випадковими даними
-	${number}  random_number  1  99
-	create_document_RMD.Ввести значення в поле  Номер вихідного документа  ${number}-${number}
-	Set To Dictionary  ${data['document']}  number  ${number}-${number}
+	${first number}  random_number  100  999
+	${second number}  random_number  100  999
+	create_document_RMD.Ввести значення в поле  Номер вихідного документа  ${first number}-${second number}
+	Set To Dictionary  ${data['document']}  number  ${first number}-${second number}
 
 
 Заповнити поле "Дата вихідного документа" сьогоднішньою датою
