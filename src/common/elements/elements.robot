@@ -40,3 +40,12 @@ ${notice message}					//*[@id="instant-messages-container"]
 	...  Click Element  ${notice message}
 	Run Keyword If  ${page does not contains notice} == ${False}
 	...  elements.Закрити всі сповіщення (за необхідністю)
+
+
+Натиснути "Сохранить" у вікні
+    [Arguments]  ${title}
+    ${btn}  Set Variable
+    ...  //*[contains(@id,"ModalMode")][contains(text(),"${title}")]/ancestor::div[contains(@class,"mainDiv")]//a[@title="Сохранить"]
+    Click Element  ${btn}
+    Дочекатись закінчення загрузки сторінки
+    Element Should Not Be Visible  ${btn}
