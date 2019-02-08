@@ -14,6 +14,14 @@ Documentation			Пейджа для сторінки Реєстру докуме
     Press Key  ${input}  \\13
 
 
+Вибрати рядок в основному вікні за номером
+    [Arguments]  ${i}
+    ${row}  Set Variable  //*[@data-placeid="DMZ"]//tr[contains(@class,"Row")]
+    elements.Дочекатися відображення елемента на сторінці  ${row}
+    Click Element  (${row})[1]
+    elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]
+
+
 Отримати кількість документів
 	${quantity}  Get Element Count
 	...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "Row")]

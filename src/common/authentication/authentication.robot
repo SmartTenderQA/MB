@@ -45,6 +45,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	Wait Until Element Is Visible  ${all users popup locator}
 	${all users}  Get Text  ${all users popup locator}
 	${user index}  Get Index From List  ${all users.split('\n')}  ${login}
+	Log Many  ${login}  ${all users}
 	${user locator}  Set Variable  (//*[@class="dhxcombo_option"])[${user index + 1}]|(//*[@class="dxeListBoxItemRow_DevEx" and not(@id)])[${user index + 1}]
 	Wait Until Element Is Visible  ${user locator}
 	Click Element  ${user locator}

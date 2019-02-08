@@ -18,6 +18,15 @@
 
 Вибрати рядок "В разрезе аналитик" за номером
     [Arguments]  ${i}
-    ${row}  Set Variable  //*[@id="MainSted2PageControl_SPEC_CC"]//tr[contains(@class,"Row")]
+    ${row}  Set Variable  //*[@data-placeid="SPEC"]//tr[contains(@class,"Row")]
+    elements.Дочекатися відображення елемента на сторінці  ${row}
     Click Element  (${row})[${i}]
+    elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]
+
+
+Вибрати рядок в основному вікні за номером
+    [Arguments]  ${i}
+    ${row}  Set Variable  //*[@data-placeid="DOG"]//tr[contains(@class,"Row")]
+    elements.Дочекатися відображення елемента на сторінці  ${row}
+    Wait Until Keyword Succeeds  6  2  Click Element  (${row})[1]
     elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]

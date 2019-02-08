@@ -17,6 +17,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Test Cases ***
 Створити новий документ за зразком
     supply_contracts.Пошук по полю в основному вікні  Уник.номер  1606
+    supply_contracts.Вибрати рядок в основному вікні за номером  1
     supply_contracts.Активувати вкладку  В разрезе аналитик
     supply_contracts.Вибрати рядок "В разрезе аналитик" за номером  2
     main_menu.Натиснути кнопку в головному меню за назвою  На основании (Shift+F7)
@@ -29,14 +30,26 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 Знайти документ в "Реестр документов | Юридические обязательства"
     catalogs.Відкрити довідник за назвою  Финансовые обязательства
     Очистити поля з датою
-    elements.Встановити чек-бокс
+    elements.Встановити чек-бокс  Юридические обязательства (_LEGAL_OBL)
     Перевірити що вибрано тільки один фільтр
     elements.Натиснути кнопку у вікні  Условие отбора документов  Установить
     supply_contracts.Активувати вкладку  Реестр документов | Юридические обязательства
     documents_register.Пошук по полю в основному вікні  № документа  ${data['doc number']}
+    documents_register.Вибрати рядок в основному вікні за номером  1
+    Перевірити результат пошуку
 
 
+Перевести документ по стадіям
+    main_menu.Натиснути кнопку в головному меню за назвою  Передать вперед (Alt+Right)
+	documents_register.Стадія поточного документа повинна бути  Исполнение
+    main_menu.Натиснути кнопку в головному меню за назвою  Вернуть назад (Alt+Left)
+	documents_register.Стадія поточного документа повинна бути  Проект
 
+
+Видалення документа
+    main_menu.Натиснути кнопку в головному меню за назвою  Удалить (F8)
+    elements.Натиснути кнопку у вікні  Удаление. Реестр документов  Удалить
+    Run Keyword And Expect Error  *not found*  documents_register.Вибрати рядок в основному вікні за номером  1
 
 
 
@@ -44,7 +57,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  BUHGOVA2_new
+	authentication.Авторизуватися  ${env}
 	Перейти в інтерфейс "Договоры | Картотека"
 
 
@@ -72,3 +85,14 @@ Suite Precondition
     ${count}  Get Element Count  //*[@data-name="TREEKDMT"]//input[@type="checkbox"][@checked]
     Should Be Equal As Strings  ${count}  1  Вибрано більш ніж один фільтр
 
+
+Перевірити результат пошуку
+
+    main_menu.Натиснути кнопку в головному меню за назвою  Изменить (F4)
+    ${doc number}  Get Element Attribute  //*[@data-name="NDM"]//input  value
+    ${doc date}    Get Element Attribute  //*[@data-name="DDM"]//input  value
+    ${partner}     Get Element Attribute  //*[@data-name="ORG"]//input[not(@type="hidden")]  value
+    Should Be Equal  ${data['doc number']}  ${doc number}
+    Should Be Equal  ${data['doc date']}    ${doc date}
+    Should Be Equal  ${data['partner']}     ${partner}
+    elements.Натиснути кнопку у вікні  Корректировка  Отменить
