@@ -9,11 +9,11 @@
 
 Активувати вкладку
     [Arguments]  ${title}
-    ${status}  Run Keyword And Return Status  Element Should Be Visible  //*[contains(@class,"active-tab")]//td[.="${title}"]
+    ${status}  Run Keyword And Return Status  Element Should Be Visible  //*[contains(@class,"active-tab")]//td[contains(text(),"${title}")]
     Run Keyword If  '${status}' == 'False'  Run Keywords
-    ...  elements.Дочекатися відображення елемента на сторінці  //td[.="${title}"]  AND
-    ...  Click Element  //td[.="${title}"]  AND
-    ...  elements.Дочекатися відображення елемента на сторінці  //*[contains(@class,"active-tab")]//td[.="${title}"]
+    ...  elements.Дочекатися відображення елемента на сторінці  //td[contains(text(),"${title}")]  AND
+    ...  Click Element  //td[contains(text(),"${title}")]  AND
+    ...  elements.Дочекатися відображення елемента на сторінці  //*[contains(@class,"active-tab")]//td[contains(text(),"${title}")]
 
 
 Вибрати рядок "В разрезе аналитик" за номером

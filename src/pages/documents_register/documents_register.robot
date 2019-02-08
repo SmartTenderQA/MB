@@ -18,7 +18,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
     [Arguments]  ${i}
     ${row}  Set Variable  //*[@data-placeid="DMZ"]//tr[contains(@class,"Row")]
     elements.Дочекатися відображення елемента на сторінці  ${row}
-    Click Element  (${row})[1]
+    Click Element  (${row})[${i}]
     elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]
 
 
@@ -126,7 +126,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
 Стадія поточного документа повинна бути
 	[Arguments]  ${status}
 	Set Global Variable  ${active_row_selector}
-	...  //tr[@class="evenRow rowselected"]//td[count(//div[contains(text(), 'Стадия')]/ancestor::td[@draggable]/preceding-sibling::*)+1]
+	...  //tr[contains(@class,"Row rowselected")]//td[count(//div[contains(text(), 'Стадия')]/ancestor::td[@draggable]/preceding-sibling::*)+1]
 	${text}  Get Text  ${active_row_selector}
 	Should Be True  '${text}' == '${status}'
 

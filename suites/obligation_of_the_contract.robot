@@ -1,6 +1,7 @@
 *** Settings ***
 Metadata  Команда запуска
 ...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_new -v platform:WIN10 -v browser:chrome suites/obligation_of_the_contract.robot
+...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_ALL -v platform:WIN10 -v browser:chrome suites/obligation_of_the_contract.robot
 
 Resource  ../src/src.robot
 Suite Setup  Suite Precondition
@@ -12,16 +13,20 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 *** Variables ***
 &{data}
+&{dog number}
+...                BUHGOVA2_new=1606
+...                MBDEMOGOV_ALL=207
 
 
 *** Test Cases ***
 Створити новий документ за зразком
-    supply_contracts.Пошук по полю в основному вікні  Уник.номер  1606
+    supply_contracts.Пошук по полю в основному вікні  Уник.номер  ${dog number['${env}']}
     supply_contracts.Вибрати рядок в основному вікні за номером  1
     supply_contracts.Активувати вкладку  В разрезе аналитик
     supply_contracts.Вибрати рядок "В разрезе аналитик" за номером  2
     main_menu.Натиснути кнопку в головному меню за назвою  На основании (Shift+F7)
     main_menu.Натиснути на кнопку "Юридическое обязательтво"
+    Вказати довільний номер документу
     Зберегти дані документу
     elements.Натиснути кнопку у вікні  Корректировка  Сохранить
     main_menu.Вийти з функції
@@ -30,7 +35,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 Знайти документ в "Реестр документов | Юридические обязательства"
     catalogs.Відкрити довідник за назвою  Финансовые обязательства
     Очистити поля з датою
-    elements.Встановити чек-бокс  Юридические обязательства (_LEGAL_OBL)
+    elements.Встановити чек-бокс  Юридические обязательства
     Перевірити що вибрано тільки один фільтр
     elements.Натиснути кнопку у вікні  Условие отбора документов  Установить
     supply_contracts.Активувати вкладку  Реестр документов | Юридические обязательства
@@ -65,6 +70,17 @@ Suite Precondition
 	start_page.Натиснути "Банк"
 	catalogs.Відкрити довідник за назвою  Договоры поставок
 	supply_contracts.Активувати вкладку   Договоры | Картотека
+
+
+Вказати довільний номер документу
+    ${num}  service.get_some_uuid
+    ${input}  Set Variable  //*[@data-name="NDM"]//input
+    Clear input By JS  ${input}
+    Input Text         ${input}  ${num[:8]}
+    Press Key  ${input}  \\13
+    Sleep  .5
+    ${doc number}  Get Element Attribute  ${input}  value
+    Should Be Equal  ${doc number}  ${num[:8]}
 
 
 Зберегти дані документу

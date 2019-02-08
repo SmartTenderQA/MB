@@ -53,7 +53,7 @@ ${notice message}					//*[@id="instant-messages-container"]
 
 Встановити чек-бокс
     [Arguments]  ${name}
-    ${check box}  Set Variable  //label[.="${name}"]/preceding-sibling::input[@type="checkbox"]
+    ${check box}  Set Variable  //label[contains(text(),"${name}")]/preceding-sibling::input[@type="checkbox"]
     ${check status}  Run Keyword And Return Status  Element Should Be Visible  ${check box}[@checked]
     Run Keyword If  '${check status}' == 'False'  Run Keywords
     ...  Click Element  ${check box}  AND
