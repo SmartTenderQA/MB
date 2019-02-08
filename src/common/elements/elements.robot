@@ -40,3 +40,21 @@ ${notice message}					//*[@id="instant-messages-container"]
 	...  Click Element  ${notice message}
 	Run Keyword If  ${page does not contains notice} == ${False}
 	...  elements.Закрити всі сповіщення (за необхідністю)
+
+
+Натиснути кнопку у вікні
+    [Arguments]  ${title}  ${key}
+    ${btn}  Set Variable
+    ...  //*[contains(@id,"ModalMode")][contains(text(),"${title}")]/ancestor::div[contains(@class,"mainDiv")]//a[@title="${key}"]
+    Click Element  ${btn}
+    Дочекатись закінчення загрузки сторінки
+    Element Should Not Be Visible  ${btn}
+
+
+Встановити чек-бокс
+    [Arguments]  ${name}
+    ${check box}  Set Variable  //label[.="${name}"]/preceding-sibling::input[@type="checkbox"]
+    ${check status}  Run Keyword And Return Status  Element Should Be Visible  ${check box}[@checked]
+    Run Keyword If  '${check status}' == 'False'  Run Keywords
+    ...  Click Element  ${check box}  AND
+    ...  Wait Until Element Is Visible  ${check box}[@checked]

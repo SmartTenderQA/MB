@@ -23,6 +23,7 @@ Resource	pages/start_page/sales/sales.robot
 Resource	pages/main_menu/main_menu.robot
 Resource	pages/resource_classifier/resource_classifier.robot
 Resource	pages/documents_register/documents_register.robot
+Resource    pages/supply_contracts/supply_contracts.robot
 
 
 Resource	pages_RMD/main_menu_RMD/main_menu_RMD.robot
@@ -50,7 +51,8 @@ ${hub}								http://autotest.it.ua:4444/wd/hub
 ...									CPMB=http://192.168.1.205/wsmbdemo_all/client
 ...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
 ...									MBDEMOGOV_DLP=http://cpmb/wsmbdemogov_dlp/clientRMD/?proj=it_UK
-
+...                                 BUHGOVA2_new=https://webclient.it-enterprise.com/client/?proj=K_BUHGOVA2_RU&dbg=1&iconset=master&rmdtheme=.5&tz=2
+...                                 MBDEMOGOV_ALL=http://192.168.1.205/wsmbdemogov/client/(S(fe3r14den0dy04ksidopo4p4))/?proj=it_RU&tz=2
 
 
 ${users_variables_path1}   /home/testadm/MB_users_variables.py

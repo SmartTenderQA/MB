@@ -22,7 +22,6 @@ Test Setup  Check Prev Test Status
 Test Teardown  Run Keyword If Test Failed  Run Keywords
 ...  Capture Page Screenshot  AND
 ...  Log Location
-...  AND  debug
 
 
 *** Variables ***
