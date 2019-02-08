@@ -36,3 +36,11 @@ Documentation			Пейджа для стартової сторінки, яка 
 	Click Element  ${stock btn}
 	Дочекатись закінчення загрузки сторінки
 	Page Should Contain Element  //div[@class="menulistview-header"]//*[contains(text(), 'Продажі')]|//div[@class="menulistview-header"]//*[contains(text(), 'Продажи')]
+
+
+Натиснути "Банк"
+	${bank btn}  Set Variable  //div[contains(@class, 'TreeViewContainer')]//*[contains(text(), 'Банк')]
+	Wait Until Element Is Visible  ${bank btn}  5
+	Click Element  ${bank btn}
+	Дочекатись закінчення загрузки сторінки
+	Page Should Contain Element  //div[@class="menulistview-header"]//*[contains(text(), 'Банк')]
