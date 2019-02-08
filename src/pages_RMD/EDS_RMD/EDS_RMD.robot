@@ -7,7 +7,7 @@ ${EDS window}			//*[@id="eds_placeholder"]
 *** Keywords ***
 Підписати ЄЦП
 	elements.Дочекатися відображення елемента на сторінці  ${EDS window}
-	EDS_RMD.Вибрати ЦСК за назвою  Тестовий ЦСК АТ "ІІТ"
+	Wait Until Keyword Succeeds  15  3  EDS_RMD.Вибрати ЦСК за назвою  Тестовий ЦСК АТ "ІІТ"
 	EDS_RMD.Завантажити ключ
 	EDS_RMD.Ввести пароль ключа
 	EDS_RMD.Натиснути кнопку підписати
