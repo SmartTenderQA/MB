@@ -6,6 +6,14 @@ Documentation			Пейджа для сторінки Реєстру докуме
 
 
 *** Keywords ***
+Пошук по полю в основному вікні
+    [Arguments]  ${field}  ${value}
+    ${input}  Set Variable
+    ...  (//*[@class="hdr"]//td/input)[count(//*[@data-placeid="DMZ"]//div[contains(text(), '${field}')]/ancestor::td[1]/preceding-sibling::*)]
+    Input Text  ${input}  ${value}
+    Press Key  ${input}  \\13
+
+
 Отримати кількість документів
 	${quantity}  Get Element Count
 	...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "Row")]
