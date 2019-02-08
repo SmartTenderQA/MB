@@ -13,7 +13,9 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	[Arguments]  ${user_name}
 	Wait Until Page Contains Element  ${login btn}  15
 	${login}  src.Отримати дані користувача по полю  ${user_name}  login
-	authentication.Вибрати користувача  ${login}
+	Run Keyword If  '${env}' == 'MBDEMOGOV_DLP'
+	...  authentication.Вибрати користувача  ${login[:-3]}
+	...  ELSE  authentication.Вибрати користувача  ${login}
 	${password}  src.Отримати дані користувача по полю  ${user_name}  password
 	authentication.Ввести пароль  ${password}
 	authentication.Натиснути "Увійти"
@@ -32,6 +34,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	[Arguments]  ${user_name}
 	Run Keyword And Ignore Error  elements.Закрити всі сповіщення (за необхідністю)
 	main_menu_RMD.Натиснути на іконку користувача
+	Run Keyword And Ignore Error  elements.Закрити всі сповіщення (за необхідністю)
 	main_menu_RMD.Натиснути "Делеговані права"  ${user_name}
 
 #########################################################
@@ -54,7 +57,6 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	...  Run Keywords
 	...  Capture Page Screenshot							AND
 	...  authentication.Вибрати користувача  ${login}
-
 
 
 Ввести пароль

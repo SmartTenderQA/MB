@@ -7,10 +7,10 @@ ${EDS window}			//*[@id="eds_placeholder"]
 *** Keywords ***
 Підписати ЄЦП
 	elements.Дочекатися відображення елемента на сторінці  ${EDS window}
-	EDS.Вибрати ЦСК за назвою  Тестовий ЦСК АТ "ІІТ"
-	EDS.Завантажити ключ
-	EDS.Ввести пароль ключа
-	EDS.Натиснути кнопку підписати
+	Wait Until Keyword Succeeds  15  3  EDS_RMD.Вибрати ЦСК за назвою  Тестовий ЦСК АТ "ІІТ"
+	EDS_RMD.Завантажити ключ
+	EDS_RMD.Ввести пароль ключа
+	EDS_RMD.Натиснути кнопку підписати
 
 
 Вибрати ЦСК за назвою
@@ -24,7 +24,7 @@ ${EDS window}			//*[@id="eds_placeholder"]
 
 
 Завантажити ключ
-	Choose File  ${EDS window}//input[@type='file']  ${EXECDIR}/src/pages_RMD/EDS/Key-6.dat
+	Choose File  ${EDS window}//input[@type='file']  ${EXECDIR}/src/pages_RMD/EDS_RMD/Key-6.dat
 	elements.Дочекатися відображення елемента на сторінці  //*[contains(text(),'Key-6.dat')]  2
 
 

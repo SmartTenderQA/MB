@@ -8,6 +8,7 @@ Documentation			Пейджа для стартової сторінки, яка 
 *** Keywords ***
 Натиснути "Завдання і документи"
 	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки RMD
 	${tasks and docs btn}  Set Variable  //*[contains(@class,'splitter-panel')]//*[contains(text(),'Завдання і документи')]
 	elements.Дочекатися відображення елемента на сторінці  ${tasks and docs btn}  15
 	Click Element  ${tasks and docs btn}

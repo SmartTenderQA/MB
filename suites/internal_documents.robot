@@ -10,8 +10,10 @@ Metadata  Окружения
 ...  - chrome
 ...  - ff
 Metadata  Команда запуска
-...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v browser:chrome suites/internal_documents.robot
-...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v browser:firefox suites/internal_documents.robot
+...  - robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v platform:WIN10 -v browser:chrome suites/internal_documents.robot
+...  - robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_RMD -v browser:firefox suites/internal_documents.robot
+...  - robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_DLP -v platform:WIN10 -v browser:chrome suites/internal_documents.robot
+...  - robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_DLP -v browser:firefox suites/internal_documents.robot
 
 Resource  ../src/src.robot
 Suite Setup  Suite Precondition
@@ -34,7 +36,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Вибрати тип документа за назвою  Службові документи
 	Заповнити обов'язкові поля документа
 	create_document_RMD.Натиснути "Додати"
-	tasks_RMD.Натиснути передати  На погодження
+	tasks_detail_RMD.Натиснути передати  На погодження
 	elements.Натиснути в валідаційному вікні  Погодження. Реєстрація внутр.№  OK
 
 
@@ -44,8 +46,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати  Погодити
-	EDS.Підписати ЄЦП
+	tasks_detail_RMD.Натиснути передати  Погодити
+	EDS_RMD.Підписати ЄЦП
 
 
 Відправити документ на доопрацювання виконавцем 1-го рівня
@@ -54,8 +56,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати  На доопрацювання проекту
-	Заповнити поле "Зауваження"
+	tasks_detail_RMD.Натиснути передати  На доопрацювання проекту
+	tasks_detail_RMD.Заповнити поле "Зауваження"
 	elements.Натиснути в валідаційному вікні  Зауваження  OK
 
 
@@ -66,9 +68,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Проекти документів
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Відкрити папку завдань і документів за назвою  Узгодження
 	Page Should Contain Element  //*[@class="frame-header"]//*[contains(text(),'Нова версія')]/..
-	tasks_RMD.Натиснути передати  На погодження
+	tasks_detail_RMD.Натиснути передати  На погодження
 
 
 Повторно погодити документ підлеглим виконавця
@@ -77,8 +78,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати  Погодити
-	#EDS.Підписати ЄЦП
+	tasks_detail_RMD.Натиснути передати  Погодити
+	#EDS_RMD.Підписати ЄЦП
 
 
 Погодити документ виконавцем 1-го рівня
@@ -87,22 +88,24 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На погодження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати  Погодити
-	#EDS.Підписати ЄЦП
+	tasks_detail_RMD.Натиснути передати  Погодити
+	#EDS_RMD.Підписати ЄЦП
 
 
 Опрацювати документ помічником адресата
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  assistant_addressee
-	start_page_RMD.Натиснути "Завдання і документи"
 	authentication.Змінити Делеговані права  TEST_Адресат
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати кнопку  Додати задачу
-	Заповнити обов'язкові поля задачі
-	create_document_RMD.Натиснути "Додати"
-	tasks_RMD.Натиснути кнопку  Опрацьовано помічником
+	tasks_detail_RMD.Натиснути кнопку  Додати задачу
+	create_task_RMD.Заповнити поле "Зміст задачі" випадковим текстом
+	Click Element  //*[@title="Потребує введення коментаря"]   #это тут необходимо
+	create_task_RMD.Ввести текст в поле "До відома"  TEST_Підлеглий виконавця до відома
+	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Cпіввиконавець 1-го рівня
+	create_task_RMD.Натиснути "Додати"
+	tasks_detail_RMD.Натиснути кнопку  Опрацьовано помічником
 
 
 Перевірити наявність документа адресатом
@@ -119,8 +122,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути  Повернути ініціатору  Змінити виконавця
-	Заповнити поле "Примітка"
+	tasks_detail_RMD.Натиснути з умовою  Повернути ініціатору  Змінити виконавця
+	tasks_detail_RMD.Заповнити поле "Примітка"
 	elements.Натиснути в валідаційному вікні  Примітка  OK
 	tasks_RMD.Перевірити статус задачі  ${data['task']['text']}  Повернуто ініціатору
 
@@ -131,7 +134,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  Розписані резолюції на підлеглих
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Виконати дію для задачі  ${data['task']['text']}  Зміна виконавця
+	tasks_detail_RMD.Виконати дію для задачі  ${data['task']['text']}  Зміна виконавця
 	elements.Натиснути в валідаційному вікні  Зміна виконавця  Змінити виконавця
 	Press Key  //td[contains(text(),'TEST_Підлеглий співвиконавця')]  \13
 
@@ -142,7 +145,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути кнопку  Виконати
+	tasks_detail_RMD.Натиснути кнопку  Виконати
 
 
 Виконати завдання підлеглим співвиконавця
@@ -151,8 +154,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути кнопку  Виконати
-	Заповнити поле "Примітка"
+	tasks_detail_RMD.Натиснути кнопку  Виконати
+	tasks_detail_RMD.Заповнити поле "Примітка"
 	elements.Натиснути в валідаційному вікні  Примітка  OK
 
 
@@ -164,7 +167,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Перевірити статус задачі  ${data['document']['text']}  Опрацьовано помічником
 	tasks_RMD.Перевірити статус задачі  ${data['document']['text']}  Виконано підлеглим
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути кнопку  Виконати
+	tasks_detail_RMD.Натиснути кнопку  Виконати
 
 
 Перемістити документ в архів автором
@@ -174,7 +177,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	#main_menu_RMD.Вибрати вкладку в головному меню за назвою  Задачі
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На підтвердження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	tasks_RMD.Натиснути передати  В архів
+	tasks_detail_RMD.Натиснути передати  В архів
 
 
 *** Keywords ***
@@ -190,51 +193,6 @@ Suite Precondition
 
 Заповнити обов'язкові поля документа
 	create_document_RMD.Вибрати елемент з випадаючого списку  Адресати по документу  TEST_Адресат
-	Заповнити поле "Зміст повідомлення"
+	create_document_RMD.Заповнити поле "Зміст документа" випадковим текстом
 	create_document_RMD.Вибрати елемент з випадаючого списку  Керівник  TEST_Підлеглий виконавця
 	create_document_RMD.Вибрати елемент з випадаючого списку  Фінальний підписант  TEST_Виконавець 1-го рівня
-
-
-Заповнити поле "Зміст повідомлення"
-	${text}  create_sentence  20
-	create_document_RMD.Ввести значення в поле  Зміст  ${text}
-	Set To Dictionary  ${data['document']}  text  ${text}
-
-
-Заповнити поле "Зауваження"
-	${remark_text}  create_sentence  10
-	tasks_RMD.Заповнити поле зауваження  ${remark_text}
-	Set To Dictionary  ${data['document']}  remark  ${remark_text}
-
-
-Заповнити обов'язкові поля задачі
-	Заповнити поле "Зміст задачі"
-	Click Element  //*[@title="Потребує введення коментаря"]
-	Заповнити поле "Виконавець" для задачі
-	create_document_RMD.Ввести значення в поле  Виконавець  TEST_Cпіввиконавець 1-го рівня
-	Заповнити поле "До відома" для задачі
-
-
-Заповнити поле "Зміст задачі"
-	${text}  create_sentence  20
-	${input}  Set Variable  //input[@placeholder="Введіть опис..."]
-	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${input}  ${text}
-	Set To Dictionary  ${data['task']}  text  ${text}
-
-
-Заповнити поле "До відома" для задачі
-	${locator}  Set Variable  //*[contains(text(),'відома')]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
-	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${locator}  TEST_Підлеглий виконавця до відома
-
-
-Заповнити поле "Виконавець" для задачі
-	${locator}  Set Variable  //*[contains(text(),'Виконавець')]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
-	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${locator}  TEST_Cпіввиконавець 1-го рівня
-
-
-Заповнити поле "Примітка"
-	${remark_text}  create_sentence  10
-	${locator}  Set Variable  //*[@class="dhxwin_active menuget"]//textarea
-	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${locator}  ${remark_text}
-	Set To Dictionary  ${data['task']}  remark  ${remark_text}
-

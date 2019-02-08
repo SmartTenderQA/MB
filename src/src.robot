@@ -29,8 +29,11 @@ Resource    pages/supply_contracts/supply_contracts.robot
 Resource	pages_RMD/main_menu_RMD/main_menu_RMD.robot
 Resource	pages_RMD/start_page_RMD/start_page_RMD.robot
 Resource	pages_RMD/tasks_RMD/tasks_RMD.robot
+Resource	pages_RMD/tasks_detail_RMD/tasks_detail_RMD.robot
 Resource	pages_RMD/create_document_RMD/create_document_RMD.robot
-Resource	pages_RMD/EDS/EDS.robot
+Resource	pages_RMD/create_task_RMD/create_task_RMD.robot
+Resource	pages_RMD/staff_RMD/staff_RMD.robot
+Resource	pages_RMD/EDS_RMD/EDS_RMD.robot
 
 
 *** Variables ***
@@ -47,11 +50,11 @@ ${hub}								http://autotest.it.ua:4444/wd/hub
 ...									WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
 ...									CPMB=http://192.168.1.205/wsmbdemo_all/client
 ...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
-...									MBDEMOGOV_DLP=http://cpmb/wsmbdemogov_dlp/clientRMD/?proj=it_UK
+...									MBDEMOGOV_DLP=http://192.168.1.205/wsmbdemogov_dlp/clientRMD/?proj=it_UK
 ...                                 BUHGOVA2_new=https://webclient.it-enterprise.com/client/?proj=K_BUHGOVA2_RU&dbg=1&iconset=master&rmdtheme=.5&tz=2
 ...                                 MBDEMOGOV_ALL=http://192.168.1.205/wsmbdemogov/client/(S(fe3r14den0dy04ksidopo4p4))/?proj=it_RU&tz=2
 
-
+#todo mbdemogov from 192.168.1.205 to cpmb
 ${users_variables_path1}   /home/testadm/MB_users_variables.py
 ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
 
