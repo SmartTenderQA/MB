@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation  http://joxi.ru/zANOKR9TBD9wLr
 
 
 *** Variables ***
@@ -20,33 +21,6 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	Дочекатись закінчення загрузки сторінки RMD
 
 
-Натиснути передати
-	[Arguments]  ${text}
-	${locator}  Set Variable  //*[contains(@title,'${text}')]/*[@class="split-button-container"]
-	elements.Дочекатися відображення елемента на сторінці  ${locator}
-	Click Element  ${locator}
-	Дочекатись закінчення загрузки сторінки RMD
-
-
-Натиснути
-	[Arguments]  ${btn_name}  ${reason}
-	${btn locator}  Set Variable  //*[@title="${btn_name}"]/*[@class="sb-dd"]
-	elements.Дочекатися відображення елемента на сторінці  ${btn locator}
-	Click Element  ${btn locator}
-	${reason locator}  Set Variable  //*[@class="item-control-popup-menu"]//*[contains(text(),'${reason}')]
-	elements.Дочекатися відображення елемента на сторінці  ${reason locator}
-	Click Element  ${reason locator}
-	Дочекатись закінчення загрузки сторінки RMD
-
-
-Натиснути кнопку
-	[Arguments]  ${text}
-	${locator}  Set Variable  //*[contains(@title,'${text}')]
-	elements.Дочекатися відображення елемента на сторінці  ${locator}
-	Click Element  ${locator}
-	Дочекатись закінчення загрузки сторінки RMD
-
-
 Відкрити папку завдань і документів за назвою
 	[Arguments]  ${folder_name}
 	${locator}  Set Variable  //*[@title='${folder_name}']
@@ -60,7 +34,7 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	${locator}  Set Variable
 	...  //*[@class="objbox selectable objbox-scrollable"]//table[@class="obj"]/tbody/tr[contains(.,"${text}")]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
-	Click Element  ${locator}
+	Run Keyword And Ignore Error  Click Element  ${locator}
 	Sleep  .2
 	Run Keyword And Ignore Error  Click Element  ${locator}   #иногда на ff есть трудности с двойнім кликов
 	Дочекатись закінчення загрузки сторінки RMD
@@ -76,38 +50,9 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	Element Should Contain  ${locator}  ${status}  Oops! Статус задачі не ${status}
 
 
-Заповнити поле зауваження
-	[Arguments]  ${text}
-	${remark window locator}  Set Variable  //*[@class="dhxwin_active menuget"]
-	Wait Until Keyword Succeeds  5s  1s  Element Should Be Visible  ${remark window locator}
-	Page Should Contain Element  ${remark window locator}//*[contains(@class,'header-text') and text()='Зауваження']
-	Select Frame  ${remark window locator}//iframe
-	Wait Until Keyword Succeeds  30  5  tasks_RMD.Ввести текст зауваження  ${text}
-	Unselect Frame
-
-
-Ввести текст зауваження
-	[Arguments]  ${text}
-	Click Element  //body
-	Input Text  //body  ${text}
-	${got text}  Get Text  //body
-	Should Be Equal As Strings  ${got text}  ${text}
-
-
-В панелі інструментів для фрейма документа натиснути
-	[Arguments]  ${btn_name}
-	${panel locator}  Set Variable  //*[@class="frame-header"]
-	Wait Until Element Is Visible  ${panel locator}
-	Click Element  ${panel locator}//*[contains(text(),'${btn_name}')]/..
-	Дочекатись закінчення загрузки сторінки RMD
-
-
-Виконати дію для задачі
-	[Arguments]  ${task_text}  ${action}
-	${btn more locator}  Set Variable  //tr[contains(.,'Звідси колода ве') and @class]//i[@class="material-icons"]
-	elements.Дочекатися відображення елемента на сторінці  ${btn more locator}
-	Click Element  ${btn more locator}
-	${action locator}  Set Variable  //*[@class="sub_item_text" and contains(text(),'Зміна виконавця')]
-	elements.Дочекатися відображення елемента на сторінці  ${action locator}
-	Click Element  ${action locator}
-	Дочекатись закінчення загрузки сторінки RMD
+#В панелі інструментів для фрейма документа натиснути
+#	[Arguments]  ${btn_name}
+#	${panel locator}  Set Variable  //*[@class="frame-header"]
+#	Wait Until Element Is Visible  ${panel locator}																		#todo понять что єто и зачем
+#	Click Element  ${panel locator}//*[contains(text(),'${btn_name}')]/..
+#	Дочекатись закінчення загрузки сторінки RMD

@@ -28,8 +28,11 @@ Resource	pages/documents_register/documents_register.robot
 Resource	pages_RMD/main_menu_RMD/main_menu_RMD.robot
 Resource	pages_RMD/start_page_RMD/start_page_RMD.robot
 Resource	pages_RMD/tasks_RMD/tasks_RMD.robot
+Resource	pages_RMD/tasks_detail_RMD/tasks_detail_RMD.robot
 Resource	pages_RMD/create_document_RMD/create_document_RMD.robot
-Resource	pages_RMD/EDS/EDS.robot
+Resource	pages_RMD/create_task_RMD/create_task_RMD.robot
+Resource	pages_RMD/staff_RMD/staff_RMD.robot
+Resource	pages_RMD/EDS_RMD/EDS_RMD.robot
 
 
 *** Variables ***
