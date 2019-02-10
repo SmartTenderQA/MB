@@ -32,7 +32,7 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 	# после выбора элемента значение в поле несколько раз меняется, нас интересует конечный вариант
 	Sleep  2
 	${get}  Run Keyword If  ${n} != 0  Get Element Attribute  ${input}  value
-	...  ELSE  Set Variable  ${EMPTY}
+	...  ELSE  Set Variable  ${SPACE}
 	[Return]  ${get}
 
 
