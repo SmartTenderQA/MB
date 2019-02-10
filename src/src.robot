@@ -24,6 +24,7 @@ Resource	pages/main_menu/main_menu.robot
 Resource	pages/resource_classifier/resource_classifier.robot
 Resource	pages/documents_register/documents_register.robot
 Resource    pages/supply_contracts/supply_contracts.robot
+Resource    pages/(detail)Реестр документов/(detail)Реестр документов.robot
 
 
 Resource	pages_RMD/main_menu_RMD/main_menu_RMD.robot
