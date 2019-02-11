@@ -105,7 +105,6 @@ Suite Precondition
 	elements.Операція над чекбоксом  Обязательства  							Select
 	elements.Операція над чекбоксом  Обязательства  							Unselect
 	elements.Операція над чекбоксом  Юридические обязательства (_LEGAL_OBL)  	Select
-	debug
 	Перевірити що вибрано тільки один фільтр
 	elements.Натиснути кнопку у вікні  Условие отбора документов  Установить
 	Wait Until Keyword Succeeds  10  .5
