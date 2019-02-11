@@ -51,10 +51,8 @@ ${notice message}					//*[@id="instant-messages-container"]
     Element Should Not Be Visible  ${btn}
 
 
-Встановити чек-бокс
-    [Arguments]  ${name}
+Операція над чекбоксом
+    [Arguments]  ${name}  ${action}=Select
     ${check box}  Set Variable  //label[contains(text(),"${name}")]/preceding-sibling::input[@type="checkbox"]
-    ${check status}  Run Keyword And Return Status  Element Should Be Visible  ${check box}[@checked]
-    Run Keyword If  '${check status}' == 'False'  Run Keywords
-    ...  Click Element  ${check box}  AND
-    ...  Wait Until Element Is Visible  ${check box}[@checked]
+    Element Should Be Visible  ${check box}
+    Run Keyword  ${action} Checkbox  ${check box}
