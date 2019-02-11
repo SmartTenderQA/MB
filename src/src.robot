@@ -35,6 +35,7 @@ Resource	pages_RMD/create_document_RMD/create_document_RMD.robot
 Resource	pages_RMD/create_task_RMD/create_task_RMD.robot
 Resource	pages_RMD/staff_RMD/staff_RMD.robot
 Resource	pages_RMD/EDS_RMD/EDS_RMD.robot
+Resource	pages_RMD/Привязати_документ_RMD/Привязати_документ_RMD.robot
 
 
 *** Variables ***
@@ -55,7 +56,7 @@ ${hub}								http://autotest.it.ua:4444/wd/hub
 ...                                 BUHGOVA2_new=https://webclient.it-enterprise.com/client/?proj=K_BUHGOVA2_RU&dbg=1&iconset=master&rmdtheme=.5&tz=2
 ...                                 MBDEMOGOV_ALL=http://192.168.1.205/wsmbdemogov/client/(S(fe3r14den0dy04ksidopo4p4))/?proj=it_RU&tz=2
 
-#todo mbdemogov from 192.168.1.205 to cpmb
+
 ${users_variables_path1}   /home/testadm/MB_users_variables.py
 ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
 

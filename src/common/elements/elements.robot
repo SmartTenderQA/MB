@@ -30,16 +30,7 @@ ${notice message}					//*[@id="instant-messages-container"]
 
 
 Закрити всі сповіщення (за необхідністю)
-	${notice close btn}  Set Variable  ${notice message}//i[contains(@class,'imcls') and not(@id)]
-	elements.Дочекатися відображення елемента на сторінці  ${notice message}  5
-	Click Element  ${notice message}
-	elements.Дочекатися відображення елемента на сторінці  ${notice close btn}
-	Click Element  ${notice close btn}
-	${page does not contains notice}  Run Keyword And Return Status
-	...  Run Keyword And Expect Error  *is not clickable*
-	...  Click Element  ${notice message}
-	Run Keyword If  ${page does not contains notice} == ${False}
-	...  elements.Закрити всі сповіщення (за необхідністю)
+	Execute Javascript  var messages = document.getElementById('instant-messages-container'); messages.parentNode.removeChild(messages);
 
 
 Натиснути кнопку у вікні
