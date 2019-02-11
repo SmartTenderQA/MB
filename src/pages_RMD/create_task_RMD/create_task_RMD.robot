@@ -41,9 +41,12 @@
 
 Натиснути "Додати"
 	${add btn}  Set Variable  ${create doc form}//*[contains(text(),'Додати')]|${create doc form}//*[contains(text(),'Зберегти')]
-	Element Should Be Visible  ${add btn}
-	Wait Until Keyword Succeeds  10s  2s  Click Element  ${add btn}
+	elements.Дочекатися відображення елемента на сторінці  ${add btn}
+	Click Element  ${add btn}
 	Дочекатись закінчення загрузки сторінки RMD
+	${is clicked}  Run Keyword And Return Status  Element Should Not Be Visible  ${add btn}
+	Run Keyword If  ${is clicked} == ${false}
+	...  create_task_RMD.Натиснути "Додати"
 
 
 Поставити задачу на контроль
@@ -56,3 +59,25 @@
 	${text}  create_sentence  20
 	create_task_RMD.Ввести текст в поле "Зміст задачі"  ${text}
 	Set To Dictionary  ${data['task']}  text  ${text}
+
+
+Перейти на вкладку
+	[Arguments]  ${tab_name}
+	${tab locator}  Set Variable  //li[contains(.,'${tab_name}')]
+	elements.Дочекатися відображення елемента на сторінці  ${tab locator}
+	Click Element  ${tab locator}
+	Дочекатись закінчення загрузки сторінки RMD
+	${tab class}  Get Element Attribute  ${tab locator}  class
+	Should Contain  ${tab class}  -active
+
+
+Ввести значення в поле з датою контролю
+	[Arguments]  ${text}
+	${field input locator}  Set Variable  ${create doc field}//*[contains(@title,'Дата зняття з контролю')]/preceding-sibling::*//input
+	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити поле з датою  ${field input locator}  ${date}
+	Дочекатись закінчення загрузки сторінки RMD
+
+
+Заповнити поле "Дата зняття з контролю" сьогоднішньою датою
+	${date}  Evaluate  '{:%d.%m.%Y}'.format(datetime.datetime.now())  datetime
+	create_task_RMD.Ввести значення в поле з датою контролю  ${date}

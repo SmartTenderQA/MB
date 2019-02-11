@@ -17,11 +17,17 @@
 	${item locator}  Set Variable  (//*[@class="dhxcombo_option"])[${item index + 1}]
 	Wait Until Element Is Visible  ${item locator}
 	Click Element  ${item locator}
+	${type is}  Get Element Attribute  //input[@type='text' and @autocomplete]  value
+	Run Keyword If  '${type is}' != '${type_name}'
+	...  Run Keywords
+	...  Capture Page Screenshot							AND
+	...  Привязати_документ_RMD.Заповнити поле "Тип прив'язки"  ${type_name}
+
 
 
 Заповниит поле "Об'єкт"
 	[Arguments]  ${object_name}
-	${object input}  Set Variable  //div[contains(text(),"Об'єкт")]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
+	${object input}  Set Variable  (//div[contains(text(),"Об'єкт")]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text'])[1]
 	Click Element  ${object input}
 	Дочекатись закінчення загрузки сторінки RMD
 	Привязати_документ_RMD.Відкрити сторінку "Конструктор бізнес-процесів"
@@ -30,7 +36,7 @@
 
 Заповнити поле "Бізнес-процес"
 	[Arguments]  ${business_process_name}
-	${business process input}  Set Variable  //div[contains(text(),"Бізнес-процес")]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
+	${business process input}  Set Variable  //div[contains(text(),"Бізнес-процес")]/../following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
 	Click Element  ${business process input}
 	Дочекатись закінчення загрузки сторінки RMD
 	Привязати_документ_RMD.Відкрити сторінку "Конструктор бізнес-процесів"
@@ -62,3 +68,17 @@
 	Дочекатись закінчення загрузки сторінки RMD
 	Click Element  //td[text()='${text}']
 	Дочекатись закінчення загрузки сторінки RMD
+
+
+Вибрати документ за назвою
+	[Arguments]  ${doc_name}
+	staff_RMD.Знайти дані за ознакою  Короткий  ${doc_name}
+	${choose checkbox}  Set Variable  //*[@class="material-icons checkbox-row-icon service"]
+	elements.Дочекатися відображення елемента на сторінці  ${choose checkbox}
+	Click Element  ${choose checkbox}
+	Дочекатись закінчення загрузки сторінки RMD
+	Click Element  //*[@id="Choice"]|//*[text()='Вибір']
+	Дочекатись закінчення загрузки сторінки RMD
+
+
+

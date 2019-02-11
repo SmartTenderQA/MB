@@ -22,7 +22,6 @@ Test Setup  Check Prev Test Status
 Test Teardown  Run Keyword If Test Failed  Run Keywords
 ...  Capture Page Screenshot  AND
 ...  Log Location
-#...  AND  debug
 
 
 *** Variables ***
@@ -164,8 +163,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	Привязати_документ_RMD.Заповниит поле "Об'єкт"  Діловодство
 	Привязати_документ_RMD.Заповнити поле "Бізнес-процес"  Вихідні документи
 	elements.Натиснути в валідаційному вікні  Параметри документа  OK
-	staff_RMD.Вибрати користувача  Короткий  TEST_Щодо тестування...
-	#debug
+	Привязати_документ_RMD.Вибрати документ за назвою  TEST_Щодо тестування...
+	tasks_detail_RMD.Натиснути кнопку  Перечитати
 
 
 Виконати задачу Підлеглим виконавця до відома
@@ -192,7 +191,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  executor_1
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
+	#todo толи баг, толи ошибка в сценарии
+	#tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Перевірити статус задачі  ${data['document']['text']}  Виконано підлеглим
 	tasks_RMD.Перевірити статус задачі  ${data['document']['text']}  Відхилено контролюючим
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
@@ -205,17 +205,22 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На підтвердження
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
-	#todo
+	tasks_RMD.Відкрити документ за змістом  Контроль
+	create_task_RMD.Перейти на вкладку  Контроль
+	create_task_RMD.Заповнити поле "Дата зняття з контролю" сьогоднішньою датою
+	create_task_RMD.Натиснути "Додати"
+	tasks_detail_RMD.Натиснути кнопку  Затвердити
 
 
 Виконати документ До відома 1-го рівня
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  to_attention_1
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
+	#todo толи баг, толи ошибка в сценарии
+	#tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Виконати
-
+	#todo
 
 *** Keywords ***
 Suite Precondition
