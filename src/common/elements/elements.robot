@@ -56,3 +56,9 @@ ${notice message}					//*[@id="instant-messages-container"]
     ${check box}  Set Variable  //label[contains(text(),"${name}")]/preceding-sibling::input[@type="checkbox"]
     Element Should Be Visible  ${check box}
     Run Keyword  ${action} Checkbox  ${check box}
+    # Видимо графическая часть отстает от уи, добавил сон что бы не городить сложную логику
+    Sleep  3
+    #######################################################################################
+    Run Keyword If
+    ...  "${action}" == "Select"  	Wait Until Keyword Succeeds  10  .5  Checkbox Should Be Selected  		${check box}  ELSE IF
+    ...  "${action}" == "Unselect"  Wait Until Keyword Succeeds  10  .5  Checkbox Should Not Be Selected  	${check box}
