@@ -14,7 +14,17 @@
 Ввести текст в поле "Виконавець"
 	[Arguments]  ${text}
 	${executant input}  Set Variable  //div[contains(text(),'Виконавець')]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
-	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${executant input}  ${text}
+	Click Element  ${executant input}
+	Дочекатись закінчення загрузки сторінки RMD
+	create_task_RMD.Відкрити сторінку "Довідник персоналу"
+	staff_RMD.Вибрати користувача  ${EMPTY}  ${text}
+
+
+Відкрити сторінку "Довідник персоналу"
+	elements.Дочекатися відображення елемента на сторінці  //*[@id='HelpF10']
+	Click Element  //*[@id='HelpF10']
+	Дочекатись закінчення загрузки сторінки RMD
+	Page Should Contain Element  //*[@class="float-container-header-text" and contains(.,'Виконавець для Smart Manager')]
 
 
 Ввести текст в поле "До відома"

@@ -18,6 +18,7 @@ ${user panel}					//*[@class="user-account-panel "]
 
 
 Натиснути на іконку користувача
+	elements.Закрити всі сповіщення (за необхідністю)
 	${locator}  Set Variable  //*[@help-id="USERICONWRAPPER"]
 	Wait Until Element Is Visible  ${locator}  2
 	Click Element  ${locator}
@@ -25,12 +26,14 @@ ${user panel}					//*[@class="user-account-panel "]
 
 
 Натиснути "Змінити користувача"
+	elements.Закрити всі сповіщення (за необхідністю)
 	Click Element  ${user panel}//*[@id="ChangeUser"]
 	elements.Натиснути в повідомленні  Завершити роботу із системою і зареєструватися під іншим ім'ям?  Так
 
 
 Натиснути "Делеговані права"
 	[Arguments]  ${user_name}
+	elements.Закрити всі сповіщення (за необхідністю)
 	Click Element  ${user panel}//*[@id='AddDelegateRigths']
 	${delegated rights}  Set Variable  //*[@class="uap-submenu"]
 	elements.Дочекатися відображення елемента на сторінці  ${delegated rights}

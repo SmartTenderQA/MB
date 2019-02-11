@@ -8,7 +8,7 @@ Documentation  http://joxi.ru/RmzLRPGT0y48pA
 Вибрати користувача
 	[Arguments]  ${feature}  ${text}
 	staff_RMD.Знайти дані за ознакою  ${feature}  ${text}
-	Click Element  //*[@id="Choice"]
+	Click Element  //*[@id="Choice"]|//*[text()='Вибір']
 	Дочекатись закінчення загрузки сторінки RMD
 
 
@@ -21,5 +21,5 @@ Documentation  http://joxi.ru/RmzLRPGT0y48pA
 	Input Text  ${feature input locator}  ${text}
 	Press Key  ${feature input locator}  \\13
 	Дочекатись закінчення загрузки сторінки RMD
-	Click Element  //*[text()='${text}']
+	Click Element  //td[text()='${text[:-3]}']|//td[text()='${text}']
 	Дочекатись закінчення загрузки сторінки RMD

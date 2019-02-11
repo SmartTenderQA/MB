@@ -22,6 +22,7 @@ Test Setup  Check Prev Test Status
 Test Teardown  Run Keyword If Test Failed  Run Keywords
 ...  Capture Page Screenshot  AND
 ...  Log Location
+#...  AND  debug
 
 
 *** Variables ***
@@ -51,7 +52,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Додати задачу
 	create_task_RMD.Заповнити поле "Зміст задачі" випадковим текстом
-	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Виконавець 1-го рівня
+	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Виконавець 1-го рівня В.
 	create_task_RMD.Ввести текст в поле "Співвиконавці"  TEST_Cпіввиконавець 1-го рівня
 	create_task_RMD.Ввести текст в поле "До відома"  TEST_До відома 1-го рівня
 	create_task_RMD.Натиснути "Додати"
@@ -88,7 +89,6 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути передати  Підписати
 	EDS_RMD.Підписати ЄЦП
-	#todo blocker
 
 
 Поставити на контроль документ Контролюючим
@@ -104,7 +104,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 
-Додати дочірну задачу та виконати головну задачу Виконавцем 1-го рівня
+Додати дочірну задачу та виконати головну задачу Виконавцем 1-го
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  executor_1
 	start_page_RMD.Натиснути "Завдання і документи"
@@ -112,7 +112,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Додати задачу
 	create_task_RMD.Заповнити поле "Зміст задачі" випадковим текстом
-	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Підлеглий виконавця
+	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Підлеглий виконавця П.
 	create_task_RMD.Ввести текст в поле "До відома"  TEST_Підлеглий виконавця до відома
 	create_task_RMD.Натиснути "Додати"
 	tasks_detail_RMD.Натиснути кнопку  Виконати
@@ -123,11 +123,12 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  co_performer_1
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
+	#todo толи баг, толи ошибка в сценарии
+	#tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Додати задачу
 	create_task_RMD.Заповнити поле "Зміст задачі" випадковим текстом
-	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Підлеглий співвиконавця
+	create_task_RMD.Ввести текст в поле "Виконавець"  TEST_Підлеглий співвиконавця П.
 	create_task_RMD.Натиснути "Додати"
 
 
@@ -144,20 +145,28 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  co_performer_1
 	start_page_RMD.Натиснути "Завдання і документи"
-	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
+	#todo толи баг, толи ошибка в сценарии
+	#tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Виконати
 
 
 Виконати задачу Підлеглим виконавця
+	#debug
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  subordinate_executor
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  До розгляду / виконання / ознайомлення
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
 	tasks_detail_RMD.Натиснути кнопку  Виконати
-	Element Should Be Visible  //div[@class="message" and contains(.,'Завдання буде закрито автоматичн')]
+	Element Should Be Visible  //div[@class="message" and contains(.,'Необходимо привязать документ-ответ')]
 	tasks_detail_RMD.Натиснути кнопку  Прив'язати документ
+	Привязати_документ_RMD.Заповнити поле "Тип прив'язки"  У відповідь на
+	Привязати_документ_RMD.Заповниит поле "Об'єкт"  Діловодство
+	Привязати_документ_RMD.Заповнити поле "Бізнес-процес"  Вихідні документи
+	elements.Натиснути в валідаційному вікні  Параметри документа  OK
+	#debug
+	staff_RMD.Вибрати користувача  Короткий  TEST_Щодо тестування...
 	#todo
 
 
