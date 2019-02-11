@@ -152,7 +152,6 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 Виконати задачу Підлеглим виконавця
-	#debug
 	authentication.Завершити сеанс
 	authentication.Авторизуватися  subordinate_executor
 	start_page_RMD.Натиснути "Завдання і документи"
@@ -165,9 +164,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	Привязати_документ_RMD.Заповниит поле "Об'єкт"  Діловодство
 	Привязати_документ_RMD.Заповнити поле "Бізнес-процес"  Вихідні документи
 	elements.Натиснути в валідаційному вікні  Параметри документа  OK
-	#debug
 	staff_RMD.Вибрати користувача  Короткий  TEST_Щодо тестування...
-	#todo
+	#debug
 
 
 Виконати задачу Підлеглим виконавця до відома

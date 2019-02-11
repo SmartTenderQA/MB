@@ -30,7 +30,7 @@ ${notice message}					//*[@id="instant-messages-container"]
 
 
 Закрити всі сповіщення (за необхідністю)
-	Execute Javascript  var messages = document.getElementById('instant-messages-container'); messages.parentNode.removeChild(messages);
+	Run Keyword And Ignore Error  Execute Javascript  var messages = document.getElementById('instant-messages-container'); messages.parentNode.removeChild(messages);
 
 
 Натиснути кнопку у вікні
