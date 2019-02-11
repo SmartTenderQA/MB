@@ -30,3 +30,15 @@
     elements.Дочекатися відображення елемента на сторінці  ${row}
     Wait Until Keyword Succeeds  6  2  Click Element  (${row})[1]
     elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]
+
+
+Закрити інформаційне сповіщення (за необхідністю)
+    ${notice}            Set Variable  //*[@class="instantMessage"]
+	${notice close btn}  Set Variable  //*[@class="instantMessageClose"]
+	${status}  Run Keyword And Return Status  elements.Дочекатися відображення елемента на сторінці  ${notice}  2
+	Run Keyword If  '${status}' == 'True'  Run Keywords
+	...  Mouse Over  ${notice}  AND
+	...  elements.Дочекатися відображення елемента на сторінці  ${notice close btn}  2  AND
+	...  Click Element  ${notice close btn}
+	${status}  Run Keyword And Return Status  Element Should Not Be Visible  ${notice close btn}
+	Run Keyword If  '${status}' == 'False'  Закрити інформаційне сповіщення (за необхідністю)

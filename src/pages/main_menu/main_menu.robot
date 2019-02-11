@@ -18,6 +18,8 @@ Documentation			Пейджа для компонента Головне меню
 Натиснути кнопку в головному меню за назвою
 	[Arguments]  ${button_name}
 	${btn locator}  Set Variable  //*[@title="${button_name}"]
+	Run Keyword If  ('вперед' or 'назад') in '${button_name}'
+	...  supply_contracts.Закрити інформаційне сповіщення (за необхідністю)
 	Wait Until Element Is Visible  ${btn locator}
 	Click Element  ${btn locator}
 	Дочекатись закінчення загрузки сторінки
@@ -32,6 +34,7 @@ Documentation			Пейджа для компонента Головне меню
 
 
 Вийти з функції
+    supply_contracts.Закрити інформаційне сповіщення (за необхідністю)
     Click Element  //span[text()="Выход из функции"]/ancestor::a
     elements.Дочекатися відображення елемента на сторінці  //div[contains(@class, 'TreeViewContainer')]
 
