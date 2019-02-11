@@ -37,7 +37,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
     Очистити поля з датою
     elements.Операція над чекбоксом  Обязательства  							Select
 	elements.Операція над чекбоксом  Обязательства  							Unselect
-	elements.Операція над чекбоксом  Юридические обязательства (_LEGAL_OBL)  	Select
+	elements.Операція над чекбоксом  Юридические обязательства  	            Select
     Перевірити що вибрано тільки один фільтр
     elements.Натиснути кнопку у вікні  Условие отбора документов  Установить
     supply_contracts.Активувати вкладку  Реестр документов | Юридические обязательства
@@ -76,19 +76,13 @@ Suite Precondition
 
 Вказати довільний номер документу
     ${num}  service.get_some_uuid
-    ${input}  Set Variable  //*[@data-name="NDM"]//input
-    Clear input By JS  ${input}
-    Input Text         ${input}  ${num[:8]}
-    Press Key  ${input}  \\13
-    Sleep  .5
-    ${doc number}  Get Element Attribute  ${input}  value
-    Should Be Equal  ${doc number}  ${num[:8]}
+    (detail)Реестр документов.Ввести значення в поле  Номер документа  ${num[:8]}
 
 
 Зберегти дані документу
-    ${doc number}  Get Element Attribute  //*[@data-name="NDM"]//input  value
-    ${doc date}    Get Element Attribute  //*[@data-name="DDM"]//input  value
-    ${partner}     Get Element Attribute  //*[@data-name="ORG"]//input[not(@type="hidden")]  value
+    ${doc number}  (detail)Реестр документов.Отримати значення поля  Номер документа
+    ${doc date}    (detail)Реестр документов.Отримати значення поля  Документ от
+    ${partner}     (detail)Реестр документов.Отримати значення поля  Контрагент
     Set To Dictionary  ${data}  doc number  ${doc number}
     Set To Dictionary  ${data}  doc date    ${doc date}
     Set To Dictionary  ${data}  partner     ${partner}
@@ -105,11 +99,10 @@ Suite Precondition
 
 
 Перевірити результат пошуку
-
     main_menu.Натиснути кнопку в головному меню за назвою  Изменить (F4)
-    ${doc number}  Get Element Attribute  //*[@data-name="NDM"]//input  value
-    ${doc date}    Get Element Attribute  //*[@data-name="DDM"]//input  value
-    ${partner}     Get Element Attribute  //*[@data-name="ORG"]//input[not(@type="hidden")]  value
+    ${doc number}  (detail)Реестр документов.Отримати значення поля  Номер документа
+    ${doc date}    (detail)Реестр документов.Отримати значення поля  Документ от
+    ${partner}     (detail)Реестр документов.Отримати значення поля  Контрагент
     Should Be Equal  ${data['doc number']}  ${doc number}
     Should Be Equal  ${data['doc date']}    ${doc date}
     Should Be Equal  ${data['partner']}     ${partner}

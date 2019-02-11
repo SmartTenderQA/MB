@@ -12,6 +12,8 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 ...  	КЕКВ=KAU5
 ...  	Тип документа=DOG_FLAG
 ...  	Номер документа=NDM
+...     Контрагент=ORG
+...     Документ от=DDM
 
 
 *** Keywords ***

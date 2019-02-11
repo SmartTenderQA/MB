@@ -18,7 +18,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
     [Arguments]  ${i}
     ${row}  Set Variable  //*[@data-placeid="DMZ"]//tr[contains(@class,"Row")]
     elements.Дочекатися відображення елемента на сторінці  ${row}
-    Wait Until Keyword Succeeds  10  .5  Click Element  (${row})[${i}]
+    Wait Until Keyword Succeeds  5  .5  Click Element  (${row})[${i}]
     elements.Дочекатися відображення елемента на сторінці  (${row})[${i}][contains(@class,"selected")]
 
 
