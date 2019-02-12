@@ -39,7 +39,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 #########################################################
 Вибрати користувача
 	[Arguments]  ${login}
-	Page Should Contain Element  ${choose user btn}
+	elements.Дочекатися відображення елемента на сторінці  ${choose user btn}  15
 	Click Element  ${choose user btn}
 	${all users popup locator}  Set Variable  //*[@class=" dhxform_obj_material"]|//*[@id="CustomDropDownContainer"]//*[@class="dxeListBox_DevEx"]
 	Wait Until Element Is Visible  ${all users popup locator}
