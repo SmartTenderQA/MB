@@ -3,6 +3,7 @@
     [Arguments]  ${field}  ${value}
     ${input}  Set Variable
     ...  (//*[@class="hdr"]//td/input)[count(//*[@data-placeid="DOG"]//div[contains(text(), '${field}')]/ancestor::td[1]/preceding-sibling::*)]
+    Scroll Page To Element XPATH  ${input}
     Input Text  ${input}  ${value}
     Press Key  ${input}  \\13
 
