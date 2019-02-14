@@ -42,11 +42,8 @@
 Натиснути "Додати"
 	${add btn}  Set Variable  ${create doc form}//*[contains(text(),'Додати')]|${create doc form}//*[contains(text(),'Зберегти')]
 	elements.Дочекатися відображення елемента на сторінці  ${add btn}
-	Click Element  ${add btn}
+	Wait Until Keyword Succeeds  10s  2s  Click Element  ${add btn}
 	Дочекатись закінчення загрузки сторінки RMD
-	${is clicked}  Run Keyword And Return Status  Element Should Not Be Visible  ${add btn}
-	Run Keyword If  ${is clicked} == ${false}
-	...  create_task_RMD.Натиснути "Додати"
 
 
 Поставити задачу на контроль
