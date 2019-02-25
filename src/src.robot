@@ -42,20 +42,23 @@ Resource	pages_RMD/Привязати_документ_RMD/Привязати_д
 
 
 *** Variables ***
-${browser}							chrome
-${platform}							ANY
+${alias}                            alias
+${browser}                          chrome
+${browser_version}
+${platform}                         ANY
+${hub}                              http://autotest.it.ua:4444/wd/hub
+${headless}                         ${True}
 
-${hub}								http://autotest.it.ua:4444/wd/hub
 
 &{url}
-...									MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
-...									MBDEMO_ALL=http://192.168.1.205/wsmbdemo_all/client/(S(4jfyvmpjrtsn2ggyct0l0rjc))/Splash?proj=it_UK&tz=3
-...									BUHETLA2=https://webclient.it-enterprise.com/client/(S(3fxdkqyoyyvaysv2iscf02h3))/?proj=K_BUHETLA2_RU&dbg=1&win=1&tz=3
-...									BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
-...									WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
-...									CPMB=http://192.168.1.205/wsmbdemo_all/client
-...									BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
-...									MBDEMOGOV_DLP=http://192.168.1.205/wsmbdemogov_dlp/clientRMD/?proj=it_UK
+...                                 MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
+...                                 MBDEMO_ALL=http://192.168.1.205/wsmbdemo_all/client/(S(4jfyvmpjrtsn2ggyct0l0rjc))/Splash?proj=it_UK&tz=3
+...                                 BUHETLA2=https://webclient.it-enterprise.com/client/(S(3fxdkqyoyyvaysv2iscf02h3))/?proj=K_BUHETLA2_RU&dbg=1&win=1&tz=3
+...									 BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
+...									 WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
+...									 CPMB=http://192.168.1.205/wsmbdemo_all/client
+...									 BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
+...									 MBDEMOGOV_DLP=http://192.168.1.205/wsmbdemogov_dlp/clientRMD/?proj=it_UK
 ...                                 BUHGOVA2_new=https://webclient.it-enterprise.com/client/?proj=K_BUHGOVA2_RU&dbg=1&iconset=master&rmdtheme=.5&tz=2
 ...                                 MBDEMOGOV_ALL=http://192.168.1.205/wsmbdemogov/client/(S(fe3r14den0dy04ksidopo4p4))/?proj=it_RU&tz=2
 
