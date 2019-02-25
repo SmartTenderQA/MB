@@ -10,6 +10,9 @@ Library     Faker/faker.py
 Library		service.py
 
 
+Resource	open_browser.robot
+
+
 Resource	common/authentication/authentication.robot
 Resource	common/loading/loading.robot
 Resource	common/elements/elements.robot
@@ -65,12 +68,10 @@ ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
 Open Browser In Grid
 	[Arguments]  ${browser}=${browser}  ${platform}=${platform}
 	clear_test_output
-	Open Browser  ${url.${env}}  ${browser}  alies  ${hub}  platformName:${platform}
+	Set Global Variable  ${start_page}  ${url.${env}}
+    Run Keyword  Відкрити браузер ${browser.lower()}  ${alias}
 	Run Keyword And Ignore Error  Handle Alert  action=DISMISS
-	Run Keyword If  '${hub}' != 'none' and '${hub}' != 'NONE'
-	...  Отримати та залогувати data_session
-    Set Window Size  1280  1024
-    Дочекатись закінчення загрузки сторінки
+	Дочекатись закінчення загрузки сторінки
 
 
 Check Prev Test Status

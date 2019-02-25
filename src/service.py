@@ -1,10 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# ==============
-#      Main script file
-# ==============
 
-import sys
+
 import os
 from glob import glob
 import uuid

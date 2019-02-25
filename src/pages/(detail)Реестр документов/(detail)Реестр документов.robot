@@ -30,7 +30,7 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 
 	${n}  Get Element Count  ${drop down element}
 	${random}  Run Keyword If  ${n} != 0  Evaluate  random.randint(1, ${n})  random
-	Run Keyword If  ${n} != 0  Click Element  ${drop down element}[${random}]
+	Run Keyword If  ${n} != 0  Click Element  ${drop down element}\[${random}]
 	# после выбора элемента значение в поле несколько раз меняется, нас интересует конечный вариант
 	Sleep  2
 	${get}  Run Keyword If  ${n} != 0  Get Element Attribute  ${input}  value
@@ -64,7 +64,7 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 	Wait Until Element Is Visible  ${drop down element}
 	${n}  Get Element Count  ${drop down element}
 	${random}  Evaluate  random.randint(1, ${n})  random
-	Click Element  ${drop down element}[${random}]
+	Click Element  ${drop down element}\[${random}]
 	${get}  Get Element Attribute  ${input}  value
 	[Return]  ${get}
 
