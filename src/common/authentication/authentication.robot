@@ -43,6 +43,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	Click Element  ${choose user btn}
 	${all users popup locator}  Set Variable  //*[@class=" dhxform_obj_material"]|//*[@id="CustomDropDownContainer"]//*[@class="dxeListBox_DevEx"]
 	Wait Until Element Is Visible  ${all users popup locator}
+	Sleep  2
 	${all users}  Get Text  ${all users popup locator}
 	${user index}  Get Index From List  ${all users.split('\n')}  ${login}
 	Log Many  ${login}  ${all users}
@@ -68,7 +69,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 
 
 Підтвердити вибір підприємства
-	${choose btn}  Set Variable  //span[contains(text(), 'Вибір')]|//span[contains(text(), 'Выбор')]
+	${choose btn}  Set Variable  //span[contains(text(), 'Вибрати')]|//span[contains(text(), 'Выбрать')]
 	Дочекатись закінчення загрузки сторінки
 	Wait Until Element Is Visible  ${choose btn}  10
 	Click Element  ${choose btn}
