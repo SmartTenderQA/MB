@@ -36,6 +36,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	tasks_RMD.Вибрати тип документа за назвою  Вихідні документи
 	Заповнити обов'язкові поля документа
 	create_document_RMD.Натиснути "Додати"
+	tasks_RMD.Додати об'єкт до задачі з випадаючого списку  Вихідний лист_TEST (OUTD_C)
 	tasks_detail_RMD.Натиснути передати  На погодження
 	elements.Натиснути в валідаційному вікні  Погодження  OK
 

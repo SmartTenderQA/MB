@@ -50,6 +50,20 @@ ${add doc popup}				//*[@id="TBCASE____SHIFT-F7popup-menu"]
 	Element Should Contain  ${locator}  ${status}  Oops! Статус задачі не ${status}
 
 
+Додати об'єкт до задачі з випадаючого списку
+	[Arguments]  ${name}
+	click element  //*[@title="Додати (F7)"]//i
+	${object}  set variable  //ul[contains(@id,"F7")]//*[@class="menu-item-text"]
+	elements.Дочекатися відображення елемента на сторінці  ${object}\[contains(text(),"${name}")]
+	click element  ${object}\[contains(text(),"${name}")]
+	Дочекатись закінчення загрузки сторінки RMD
+	select frame  //*[@class="dashboard pdf-viewer-ex"]//iframe
+	wait until page contains element  //*[@id="divDocViewer"]  10
+	unselect frame
+
+
+
+
 #В панелі інструментів для фрейма документа натиснути
 #	[Arguments]  ${btn_name}
 #	${panel locator}  Set Variable  //*[@class="frame-header"]

@@ -53,3 +53,8 @@ ${notice message}					//*[@id="instant-messages-container"]
     Run Keyword If
     ...  "${action}" == "Select"  	Wait Until Keyword Succeeds  10  .5  Checkbox Should Be Selected  		${check box}  ELSE IF
     ...  "${action}" == "Unselect"  Wait Until Keyword Succeeds  10  .5  Checkbox Should Not Be Selected  	${check box}
+
+
+Прибрати елемент зі сторінки по id
+	[Arguments]  ${id}
+	run keyword and ignore error  Execute Javascript  var messages = document.getElementById('${id}'); messages.parentNode.removeChild(messages);
