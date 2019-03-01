@@ -80,6 +80,8 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 	start_page_RMD.Натиснути "Завдання і документи"
 	tasks_RMD.Відкрити папку завдань і документів за назвою  На підпис
 	tasks_RMD.Відкрити документ за змістом  ${data['document']['text']}
+	Згорнути view файла
+	tasks_detail_RMD.Натиснути кнопку  Згорнути
 	tasks_detail_RMD.Натиснути кнопку  Опрацьовано помічником
 
 
@@ -141,3 +143,7 @@ Suite Precondition
 	${is match}  Evaluate  re.search(r'№[0-9]+/[0-9]+-[0-9]+ від ${date}', '${number and status}') is not None  re
 	Should Be True  ${is match}  Oops! Номер та дата документа не відповідає шаблону
 	Unselect Frame
+
+
+Згорнути view файла
+	drag and drop by offset  (//*[@class="splitter-handler"])[3]  300  0
