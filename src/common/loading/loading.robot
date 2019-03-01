@@ -1,26 +1,22 @@
-*** Settings ***
-Documentation			Пейджа для компонента загрузки  http://joxi.ru/5mdalbLIkGWJe2
-
-
 *** Variables ***
-${loading}							xpath=//table[contains(@id, 'LoadingPanel')]
-${loading rmd}						xpath=//div[contains(@class,'loading-panel')]
+${loading}							//table[contains(@id, 'LoadingPanel')]
+${loading rmd}						//div[contains(@class,'loading-panel')]
+${blocker}                          //*[@id="adorner"]
+
+${loadings}                         ${loading}|${loading rmd}|${blocker}
 
 
 *** Keywords ***
 Дочекатись закінчення загрузки сторінки
-	Дочекатись закінчення загрузки сторінки по елементу  ${loading}
-
-
-Дочекатись закінчення загрузки сторінки RMD
-	Дочекатись закінчення загрузки сторінки по елементу  ${loading rmd}
+	Sleep  1
+	elements.Дочекатися зникнення елемента зі сторінки  ${loadings}  120
+	Sleep  .5
+	${is visible}  Run Keyword And Return Status  Element Should Be Visible  ${loadings}
+	Run Keyword If  ${is visible}
+	...  Дочекатись закінчення загрузки сторінки
 	elements.Закрити всі сповіщення (за необхідністю)
 
 
-
-#########################################################
-#	                  Keywords							#
-#########################################################
 Дочекатись закінчення загрузки сторінки по елементу
     [Arguments]  ${locator}
     ${status}  ${message}  Run Keyword And Ignore Error

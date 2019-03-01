@@ -14,7 +14,7 @@ ${user panel}					//*[@class="user-account-panel "]
 	Run Keyword If  ${is checked} == ${false}  Run Keywords
 	...  elements.Дочекатися відображення елемента на сторінці  ${tab locator}  AND
 	...  Click Element  ${tab locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Натиснути на іконку користувача
@@ -38,5 +38,5 @@ ${user panel}					//*[@class="user-account-panel "]
 	${delegated rights}  Set Variable  //*[@class="uap-submenu"]
 	elements.Дочекатися відображення елемента на сторінці  ${delegated rights}
 	Click Element  ${delegated rights}//*[contains(text(),'${user_name}')]
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Дочекатись закінчення загрузки сторінки

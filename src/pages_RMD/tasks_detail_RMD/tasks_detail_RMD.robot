@@ -11,7 +11,7 @@ Documentation  http://joxi.ru/gmv5LPBSLXo0Xr
 	${locator}  Set Variable  //*[contains(@title,'${text}')]/*[@class="split-button-container"]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Натиснути з умовою
@@ -22,7 +22,7 @@ Documentation  http://joxi.ru/gmv5LPBSLXo0Xr
 	${reason locator}  Set Variable  //*[@class="item-control-popup-menu"]//*[contains(text(),'${reason}')]
 	elements.Дочекатися відображення елемента на сторінці  ${reason locator}
 	Click Element  ${reason locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Натиснути кнопку
@@ -30,7 +30,8 @@ Documentation  http://joxi.ru/gmv5LPBSLXo0Xr
 	${locator}  Set Variable  //*[contains(@title,"${text}")]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
+	elements.Дочекатися зникнення елемента зі сторінки  ${locator}
 
 
 Виконати дію для задачі
@@ -41,7 +42,7 @@ Documentation  http://joxi.ru/gmv5LPBSLXo0Xr
 	${action locator}  Set Variable  //*[@class="sub_item_text" and contains(text(),'${action}')]
 	elements.Дочекатися відображення елемента на сторінці  ${action locator}
 	Click Element  ${action locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Заповнити поле "Примітка"

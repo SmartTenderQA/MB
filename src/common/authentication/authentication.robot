@@ -81,7 +81,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 #Оставлю, вдруг будет еще актуально
 Закрити привітання с днем народження
 #актуально 12.12
-  Дочекатись закінчення загрузки сторінки RMD
+  Дочекатись закінчення загрузки сторінки
   Wait Until Page Contains Element  //div[@id="pcModalMode_HCB-1"]
   Click Element  //div[@id="pcModalMode_HCB-1"]
-  Дочекатись закінчення загрузки сторінки RMD
+  Дочекатись закінчення загрузки сторінки

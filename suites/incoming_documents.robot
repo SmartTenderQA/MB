@@ -249,7 +249,7 @@ Suite Precondition
 	Click Element  ${message box}//*[contains(text(),'Скасувати')]
 	Sleep  .5
 	Click Element  ${message box}//*[contains(text(),'Скасувати')]
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Додати файл "Вхідний лист (INBOX)"
@@ -259,4 +259,4 @@ Suite Precondition
 	Choose File  ${add doc box}//input[@id='fileUpload']  ${doc[0]}
 	elements.Дочекатися відображення елемента на сторінці  ${add doc box}//*[contains(text(),'${doc[1]}')]
 	Click Element  ${add doc box}//*[contains(text(),'OK')]
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
