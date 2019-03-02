@@ -14,7 +14,7 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 	${field locator}  Set Variable  ${create doc field}//*[contains(@title,'${field_name}')]/preceding-sibling::*
 	${field input locator}  Set Variable  ${field locator}//input|${field locator}//textarea
 	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${field input locator}  ${text}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Ввести значення в поле з датою
@@ -22,14 +22,14 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 	${field locator}  Set Variable  ${create doc field}//*[contains(@title,'${field_name}')]/preceding-sibling::*
 	${field input locator}  Set Variable  ${field locator}//input|${field locator}//textarea
 	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити поле з датою  ${field input locator}  ${text}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Вибрати елемент з випадаючого списку
 	[Arguments]  ${field_name}  ${text}
 	${field locator}  Set Variable  ${create doc field}//*[contains(@title,'${field_name}')]/preceding-sibling::*
 	Click Element  ${field locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	create_document_RMD.Відкрити сторінку "Довідник персоналу"
 	staff_RMD.Вибрати користувача  Прізвище  ${text}
 
@@ -37,7 +37,7 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 Відкрити сторінку "Довідник персоналу"
 	elements.Дочекатися відображення елемента на сторінці  //*[@id='HelpF10']
 	Click Element  //*[@id='HelpF10']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Page Should Contain Element  //div[contains(@title,'Довідник персоналу.')]
 
 
@@ -45,7 +45,7 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 	${add btn}  Set Variable  ${create doc form}//*[contains(text(),'Додати')]
 	Element Should Be Visible  ${add btn}
 	Wait Until Keyword Succeeds  10s  2s  Click Element  ${add btn}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Заповнити поле "Зміст документа" випадковим текстом
@@ -71,4 +71,4 @@ ${popup locator}					//*[@class="ade-list-back" and not(contains(@style,'display
 #	Wait Until Element Is Visible  ${notice msg locator}
 #	${ok btn}  Set Variable  ${notice msg locator}//*[text()='ОК']														#todo понять что єто и зачем
 #	Click Element  ${ok btn}
-#	Дочекатись закінчення загрузки сторінки RMD
+#	Дочекатись закінчення загрузки сторінки

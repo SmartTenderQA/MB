@@ -15,7 +15,7 @@
 	[Arguments]  ${text}
 	${executant input}  Set Variable  //div[contains(text(),'Виконавець')]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
 	Click Element  ${executant input}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	create_task_RMD.Відкрити сторінку "Довідник персоналу"
 	staff_RMD.Вибрати користувача  ${EMPTY}  ${text}
 
@@ -23,7 +23,7 @@
 Відкрити сторінку "Довідник персоналу"
 	elements.Дочекатися відображення елемента на сторінці  //*[@id='HelpF10']
 	Click Element  //*[@id='HelpF10']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Page Should Contain Element  //*[@class="float-container-header-text" and contains(.,'Виконавець для Smart Manager')]
 
 
@@ -43,7 +43,7 @@
 	${add btn}  Set Variable  ${create doc form}//*[contains(text(),'Додати')]|${create doc form}//*[contains(text(),'Зберегти')]
 	elements.Дочекатися відображення елемента на сторінці  ${add btn}
 	Wait Until Keyword Succeeds  10s  2s  Click Element  ${add btn}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Поставити задачу на контроль
@@ -63,7 +63,7 @@
 	${tab locator}  Set Variable  //li[contains(.,'${tab_name}')]
 	elements.Дочекатися відображення елемента на сторінці  ${tab locator}
 	Click Element  ${tab locator}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	${tab class}  Get Element Attribute  ${tab locator}  class
 	Should Contain  ${tab class}  -active
 
@@ -72,7 +72,7 @@
 	[Arguments]  ${text}
 	${field input locator}  Set Variable  ${create doc field}//*[contains(@title,'Дата зняття з контролю')]/preceding-sibling::*//input
 	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити поле з датою  ${field input locator}  ${date}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Заповнити поле "Дата зняття з контролю" сьогоднішньою датою

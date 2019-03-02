@@ -37,5 +37,5 @@ ${EDS window}			//*[@id="eds_placeholder"]
 	${locator}  Set Variable  ${EDS window}//*[@class='dhxform_btn_txt' and contains(text(),'Підписати')]
 	elements.Дочекатися відображення елемента на сторінці  ${locator}
 	Click Element  ${locator}
-	Дочекатись закінчення загрузки сторінки RMD
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
+	Дочекатись закінчення загрузки сторінки

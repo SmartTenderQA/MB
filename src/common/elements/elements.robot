@@ -12,13 +12,19 @@ ${notice message}					//*[@id="instant-messages-container"]
 	Wait Until Keyword Succeeds  ${timeout}  .5  Element Should Be Visible  ${locator}
 
 
+Дочекатися зникнення елемента зі сторінки
+	[Documentation]  timeout=...s/...m
+	[Arguments]  ${locator}  ${timeout}=10s
+	Wait Until Keyword Succeeds  ${timeout}  .5  Element Should Not Be Visible  ${locator}
+
+
 Натиснути в валідаційному вікні
 	[Arguments]  ${window_name}  ${text}
 	${locator}  Set Variable  //*[@class="dhxwin_active menuget"]
 	Wait Until Keyword Succeeds  5s  1s  Element Should Be Visible  ${locator}
 	Page Should Contain Element  ${locator}//*[contains(@class,'header-text') and text()='${window_name}']
 	Click Element  ${locator}//*[contains(text(),'${text}')]
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Натиснути в повідомленні
@@ -53,3 +59,8 @@ ${notice message}					//*[@id="instant-messages-container"]
     Run Keyword If
     ...  "${action}" == "Select"  	Wait Until Keyword Succeeds  10  .5  Checkbox Should Be Selected  		${check box}  ELSE IF
     ...  "${action}" == "Unselect"  Wait Until Keyword Succeeds  10  .5  Checkbox Should Not Be Selected  	${check box}
+
+
+Прибрати елемент зі сторінки по id
+	[Arguments]  ${id}
+	run keyword and ignore error  Execute Javascript  var messages = document.getElementById('${id}'); messages.parentNode.removeChild(messages);

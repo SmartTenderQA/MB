@@ -25,6 +25,8 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 	${search}  Set Variable  //*[@data-name="${data_name[u'${text}']}"]//img[2]
 
 	Click Element  ${input}
+	Дочекатись закінчення загрузки сторінки
+	Run Keyword And Ignore Error  Wait Until Element Is Visible  ${drop down}  3
 	Click Element  ${drop down}
 	Run Keyword And Ignore Error  Wait Until Element Is Visible  ${drop down element}
 

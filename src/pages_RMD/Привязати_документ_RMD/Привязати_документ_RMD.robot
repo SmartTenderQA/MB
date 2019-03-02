@@ -29,7 +29,7 @@
 	[Arguments]  ${object_name}
 	${object input}  Set Variable  (//div[contains(text(),"Об'єкт")]/..//following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text'])[1]
 	Click Element  ${object input}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Привязати_документ_RMD.Відкрити сторінку "Конструктор бізнес-процесів"
 	Привязати_документ_RMD.Вибрати дані за ознакою  Найменування  ${object_name}
 
@@ -38,7 +38,7 @@
 	[Arguments]  ${business_process_name}
 	${business process input}  Set Variable  //div[contains(text(),"Бізнес-процес")]/../following-sibling::*//*[@data-caption="+ Додати"]//input[@type='text']
 	Click Element  ${business process input}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Привязати_документ_RMD.Відкрити сторінку "Конструктор бізнес-процесів"
 	Привязати_документ_RMD.Вибрати дані за ознакою  Найменування  ${business_process_name}
 
@@ -46,7 +46,7 @@
 Відкрити сторінку "Конструктор бізнес-процесів"
 	elements.Дочекатися відображення елемента на сторінці  //*[@id='HelpF10']
 	Click Element  //*[@id='HelpF10']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Page Should Contain Element  //*[@class="float-container-header-text" and contains(.,'Конструктор бізнес-процесів.')]
 
 
@@ -54,7 +54,7 @@
 	[Arguments]  ${feature}  ${text}
 	Привязати_документ_RMD.Знайти дані за ознакою  ${feature}  ${text}
 	Click Element  //*[@id="Choice"]|//*[text()='Вибір']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Знайти дані за ознакою
@@ -65,9 +65,9 @@
 	Wait Until Element Is Visible  ${feature input locator}
 	Input Text  ${feature input locator}  ${text}
 	Press Key  ${feature input locator}  \\13
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Click Element  //td[text()='${text}']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 Вибрати документ за назвою
@@ -76,9 +76,9 @@
 	${choose checkbox}  Set Variable  //*[@class="material-icons checkbox-row-icon service"]
 	elements.Дочекатися відображення елемента на сторінці  ${choose checkbox}
 	Click Element  ${choose checkbox}
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 	Click Element  //*[@id="Choice"]|//*[text()='Вибір']
-	Дочекатись закінчення загрузки сторінки RMD
+	Дочекатись закінчення загрузки сторінки
 
 
 
