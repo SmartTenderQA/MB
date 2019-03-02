@@ -1,6 +1,6 @@
 *** Settings ***
 Metadata  Команда запуска
-...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2_new -v platform:WIN10 -v browser:chrome suites/obligation_of_the_contract.robot
+...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:BUHGOVA2 -v platform:WIN10 -v browser:chrome suites/obligation_of_the_contract.robot
 ...  robot --consolecolors on -L TRACE:INFO -d test_output -v env:MBDEMOGOV_ALL -v platform:WIN10 -v browser:chrome suites/obligation_of_the_contract.robot
 
 Resource  ../src/src.robot

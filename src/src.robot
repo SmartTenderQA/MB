@@ -11,6 +11,7 @@ Library		service.py
 
 
 Resource	open_browser.robot
+Resource	env_urls.robot
 
 
 Resource	common/authentication/authentication.robot
@@ -50,19 +51,6 @@ ${hub}                              http://autotest.it.ua:4444/wd/hub
 ${headless}                         ${True}
 
 
-&{url}
-...                                 MBTEST_ALL=http://192.168.1.205/wsmbtest_all/client/?proj=it_RU&tz=3
-...                                 MBDEMO_ALL=http://192.168.1.205/wsmbdemo_all/client/(S(4jfyvmpjrtsn2ggyct0l0rjc))/Splash?proj=it_UK&tz=3
-...                                 BUHETLA2=https://webclient.it-enterprise.com/client/(S(3fxdkqyoyyvaysv2iscf02h3))/?proj=K_BUHETLA2_RU&dbg=1&win=1&tz=3
-...									 BUHGOVA2=https://webclient.it-enterprise.com/client/(S(lnutooqpvguwnrpuuz13utgd))/?proj=K_BUHGOVA2_RU&dbg=1&win=1&tz=3
-...									 WEBCLIENT=https://webclient.it-enterprise.com/client/(S(hmdkfxfl5ow4ejt5ptiszejh))/?proj=K_BUHETLA2_UK&Iconset=Master&win=1&tz=3
-...									 CPMB=http://192.168.1.205/wsmbdemo_all/client
-...									 BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK
-...									 MBDEMOGOV_DLP=http://192.168.1.205/wsmbdemogov_dlp/clientRMD/?proj=it_UK
-...                                 BUHGOVA2_new=https://webclient.it-enterprise.com/client/?proj=K_BUHGOVA2_RU&dbg=1&iconset=master&rmdtheme=.5&tz=2
-...                                 MBDEMOGOV_ALL=http://192.168.1.205/wsmbdemogov/client/(S(fe3r14den0dy04ksidopo4p4))/?proj=it_RU&tz=2
-
-
 ${users_variables_path1}   /home/testadm/MB_users_variables.py
 ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
 
@@ -71,7 +59,7 @@ ${users_variables_path2}   ${EXECDIR}/MB_users_variables.py
 Open Browser In Grid
 	[Arguments]  ${browser}=${browser}  ${platform}=${platform}
 	clear_test_output
-	Set Global Variable  ${start_page}  ${url.${env}}
+	Set Global Variable  ${start_page}  ${env_urls.${env}}
     Run Keyword  Відкрити браузер ${browser.lower()}  ${alias}
 	Run Keyword And Ignore Error  Handle Alert  action=DISMISS
 	Дочекатись закінчення загрузки сторінки
