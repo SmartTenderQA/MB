@@ -11,7 +11,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 *** Keywords ***
 Авторизуватися
 	[Arguments]  ${user_name}
-	Wait Until Page Contains Element  ${login btn}  15
+	Wait Until Page Contains Element  ${login btn}  30
 	${login}  src.Отримати дані користувача по полю  ${user_name}  login
 	elements.Прибрати елемент зі сторінки по id  Clear
 	Run Keyword If  '${env}' == 'MBDEMOGOV_DLP'
