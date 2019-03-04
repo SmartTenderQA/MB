@@ -20,7 +20,7 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	${password}  src.Отримати дані користувача по полю  ${user_name}  password
 	authentication.Ввести пароль  ${password}
 	authentication.Натиснути "Увійти"
-	Run Keyword If  '${env}' == 'WEBCLIENT'
+	Run Keyword If  '${env}' == 'BUHETLA2'
 	...  authentication.Підтвердити вибір підприємства
 
 
