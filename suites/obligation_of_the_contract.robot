@@ -7,9 +7,8 @@ Resource  ../src/src.robot
 Suite Setup  Suite Precondition
 Suite Teardown  Close All Browsers
 Test Setup  Check Prev Test Status
-Test Teardown  Run Keyword If Test Failed  Run Keywords
-...  Capture Page Screenshot  AND
-...  Log Location
+Test Teardown  TestTeardown
+
 
 *** Variables ***
 &{data}
@@ -23,42 +22,46 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 *** Test Cases ***
 Створити новий документ за зразком
-    supply_contracts.Пошук по полю в основному вікні  Уник.номер  ${dog number['${env}']}
+    supply_contracts.Пошук по полю в основному вікні  Унік.номер  ${dog number['${env}']}
     supply_contracts.Вибрати рядок в основному вікні за номером  1
-    supply_contracts.Активувати вкладку  В разрезе аналитик
+    supply_contracts.Активувати вкладку  В розрізі аналітик
     supply_contracts.Вибрати рядок "В разрезе аналитик" за номером  2
-    main_menu.Натиснути кнопку в головному меню за назвою  На основании (Shift+F7)
+    main_menu.Натиснути кнопку в головному меню за назвою  На підставі (Shift+F7)
     main_menu.Натиснути на кнопку "Юридическое обязательтво"
     Вказати довільний номер документу
     Зберегти дані документу
-    elements.Натиснути кнопку у вікні  Корректировка  Сохранить
+    elements.Натиснути кнопку у вікні  Коригування  Зберегти
     main_menu.Вийти з функції
 
 
 Знайти документ в "Реестр документов | Юридические обязательства"
-    catalogs.Відкрити довідник за назвою  Финансовые обязательства
-    Очистити поля з датою
-    elements.Операція над чекбоксом  Обязательства  							Select
-	elements.Операція над чекбоксом  Обязательства  							Unselect
-	elements.Операція над чекбоксом  Юридические обязательства  	            Select
-    Перевірити що вибрано тільки один фільтр
-    elements.Натиснути кнопку у вікні  Условие отбора документов  Установить
-    supply_contracts.Активувати вкладку  Реестр документов | Юридические обязательства
-    documents_register.Пошук по полю в основному вікні  № документа  ${data['doc number']}
+    catalogs.Відкрити довідник за назвою  Юридичні/фінансові зобов'язання
+	Очистити поля з датою
+	elements.Операція над чекбоксом  Зобов'язання  							Select
+	elements.Операція над чекбоксом  Зобов'язання 							Unselect
+	elements.Операція над чекбоксом  Юридичні зобов'язання (_LEGAL_OBL)  	Select
+	Перевірити що вибрано тільки один фільтр
+	elements.Натиснути кнопку у вікні  Умова відбору документів  Встановити
+    supply_contracts.Активувати вкладку  Реєстр документів | Юридичні зобов'язання
+    documents_register.Пошук по полю в основному вікні  № документу  ${data['doc number']}
     documents_register.Вибрати рядок в основному вікні за номером  1
     Перевірити результат пошуку
 
 
 Перевести документ по стадіям
-    main_menu.Натиснути кнопку в головному меню за назвою  Передать вперед (Alt+Right)
-	documents_register.Стадія поточного документа повинна бути  Исполнение
-    main_menu.Натиснути кнопку в головному меню за назвою  Вернуть назад (Alt+Left)
+    main_menu.Натиснути кнопку в головному меню за назвою  Надіслати вперед (Alt+Right)
+	documents_register.Стадія поточного документа повинна бути  Виконання
+    main_menu.Натиснути кнопку в головному меню за назвою  Повернути назад (Alt+Left)
 	documents_register.Стадія поточного документа повинна бути  Проект
+	[Teardown]  Run Keyword If Test Failed  Run Keywords
+	...  TestTeardown  AND
+	...  main_menu.Натиснути кнопку в головному меню за назвою  Видалити (F8)  AND
+    ...  elements.Натиснути кнопку у вікні  Видалення. Реєстр документів  Видалити
 
 
 Видалення документа
-    main_menu.Натиснути кнопку в головному меню за назвою  Удалить (F8)
-    elements.Натиснути кнопку у вікні  Удаление. Реестр документов  Удалить
+    main_menu.Натиснути кнопку в головному меню за назвою  Видалити (F8)
+    elements.Натиснути кнопку у вікні  Видалення. Реєстр документів  Видалити
     Run Keyword And Expect Error  *not found*  documents_register.Вибрати рядок в основному вікні за номером  1
 
 
@@ -73,8 +76,14 @@ Suite Precondition
 
 Перейти в інтерфейс "Договоры | Картотека"
 	start_page.Натиснути "Банк"
-	catalogs.Відкрити довідник за назвою  Договоры поставок
-	supply_contracts.Активувати вкладку   Договоры | Картотека
+	catalogs.Відкрити довідник за назвою  Договори постачання
+	supply_contracts.Активувати вкладку   Договори | Картотека
+
+
+TestTeardown
+	Run Keyword If Test Failed  Run Keywords
+	...  Capture Page Screenshot  AND
+	...  Log Location
 
 
 Вказати довільний номер документу
@@ -102,11 +111,11 @@ Suite Precondition
 
 
 Перевірити результат пошуку
-    main_menu.Натиснути кнопку в головному меню за назвою  Изменить (F4)
+    main_menu.Натиснути кнопку в головному меню за назвою  Змінити (F4)
     ${doc number}  (detail)Реестр документов.Отримати значення поля  Номер документа
     ${doc date}    (detail)Реестр документов.Отримати значення поля  Документ от
     ${partner}     (detail)Реестр документов.Отримати значення поля  Контрагент
     Should Be Equal  ${data['doc number']}  ${doc number}
     Should Be Equal  ${data['doc date']}    ${doc date}
     Should Be Equal  ${data['partner']}     ${partner}
-    elements.Натиснути кнопку у вікні  Корректировка  Отменить
+    elements.Натиснути кнопку у вікні  Коригування  Скасувати

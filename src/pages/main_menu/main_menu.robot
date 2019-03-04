@@ -26,16 +26,16 @@ Documentation			Пейджа для компонента Головне меню
 
 
 Натиснути на кнопку "Юридическое обязательтво"
-    ${btn}  Set Variable  //li[contains(@class,"SubMenu")]//span[.="Юридическое обязательство"]
+    ${btn}  Set Variable  //li[contains(@class,"SubMenu")]//span[.="Юридичне зобов'язання"]
     elements.Дочекатися відображення елемента на сторінці  ${btn}
     Click Element  ${btn}
     Дочекатись закінчення загрузки сторінки
-    Element Should Contain  //*[contains(@id,"ModalMode")]//*[contains(@class,"headerContent")]  Юридические обязательства
+    Element Should Contain  //*[contains(@id,"ModalMode")]//*[contains(@class,"headerContent")]  Юридичні зобов'язання
 
 
 Вийти з функції
     supply_contracts.Закрити інформаційне сповіщення (за необхідністю)
-    Click Element  //span[text()="Выход из функции"]/ancestor::a
+    Click Element  //span[text()="Вихід з функції"]/ancestor::a
     elements.Дочекатися відображення елемента на сторінці  //div[contains(@class, 'TreeViewContainer')]
 
 
