@@ -28,6 +28,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 Додати документ та перевірити успішність його створення
+	#TODO - уточнить сценарий
 	${quantity}  documents_register.Отримати кількість документів
 	Set Global Variable  ${initial_documents_quantity}   ${quantity}
 	Створити документ
