@@ -52,9 +52,10 @@ ${drop down element}  //*[@class="ade-list-back" and contains(@style, "display: 
 	[Arguments]  ${field}  ${text}
 	${drop down}  Set Variable  //*[@data-name="${data_name[u'${field}']}"]//img[1]/..
 	Click Element  ${drop down}
-	${drop down element}  Set Variable  //td[contains(text(), '${text}')]
+	${drop down element}  Set Variable  //td[@id][contains(text(), '${text}')]
 	Wait Until Element Is Visible  ${drop down element}
 	Click Element  ${drop down element}
+	sleep  1
 
 
 Вибрати випадковий елемент з фіксованого випадаючого списку

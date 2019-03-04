@@ -55,7 +55,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  ${env}
+	authentication.Авторизуватися  Адміністратор
 
 
 Перевірити відповідність даних після зміни поля "Счет хранения"

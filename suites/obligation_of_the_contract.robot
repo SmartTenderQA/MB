@@ -14,8 +14,11 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Variables ***
 &{data}
 &{dog number}
-...                BUHGOVA2_new=1621
+...                BUHGOVA2=1621
 ...                MBDEMOGOV_ALL=214
+&{user}
+...                BUHGOVA2=Администратор
+...                MBDEMOGOV_ALL=Адміністратор
 
 
 *** Test Cases ***
@@ -64,7 +67,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  ${env}
+	authentication.Авторизуватися  ${user['${env}']}
 	Перейти в інтерфейс "Договоры | Картотека"
 
 

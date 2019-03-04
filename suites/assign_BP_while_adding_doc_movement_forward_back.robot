@@ -51,7 +51,7 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  ${env}
+	authentication.Авторизуватися  Главный бухгалтер
 
 
 Створити документ

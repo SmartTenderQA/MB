@@ -8,5 +8,5 @@ Documentation			Пейджа для сторінки Довідники  http://
 *** Keywords ***
 Відкрити довідник за назвою
 	[Arguments]  ${catalog}
-	Click Element  xpath=//*[contains(@class, 'menulistitem')]//*[contains(text(), '${catalog}')]
+	Click Element  xpath=//*[contains(@class, 'menulistitem')]//*[contains(text(), "${catalog}")]
 	Дочекатись закінчення загрузки сторінки
