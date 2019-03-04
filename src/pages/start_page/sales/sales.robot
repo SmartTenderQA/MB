@@ -9,7 +9,7 @@
 	[Arguments]  ${page_name}
 	Click Element  xpath=//*[contains(@class, 'menulistitem')]//*[contains(text(), '${page_name}')]
 	Дочекатись закінчення загрузки сторінки
-	Wait Until Page Contains Element  //td[contains (@valign, "top") and contains(text(), "Реестр документов")]  5
+	Wait Until Page Contains Element  //td[contains (@valign, "top") and contains(text(), "Реестр документов"|"Реєстр документів")]  5
 
 
 Перевірити що активна вкладка "Документ"

@@ -25,7 +25,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
 
 Отримати кількість документів
 	${quantity}  Get Element Count
-	...  //td[contains (@valign, "top") and contains(text(), "Строки")]/preceding::tr[contains(@class, "Row")]
+	...  //td[contains (@valign, "top") and contains(text(), "Строки"|"Рядки")]/preceding::tr[contains(@class, "Row")]
 	[Return]  ${quantity}
 
 
@@ -118,7 +118,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
 
 Заповнити поле Статьи доходов/затрат
 	[Arguments]  ${text}
-	${locator}  Set Variable  (//*[contains(text(), "Статьи доходов/затрат")]/following-sibling::td)[1]
+	${locator}  Set Variable  (//*[contains(text(), "Статті доходів/витрат")]/following-sibling::td)[1]
 	documents_register.Встановити фокус в поле  ${locator}
 	Wait Until Keyword Succeeds  30  5  Заповнити та перевірити текстове поле  ${locator}//input  ${text}
 	Дочекатись закінчення загрузки сторінки
@@ -127,7 +127,7 @@ Documentation			Пейджа для сторінки Реєстру докуме
 Стадія поточного документа повинна бути
 	[Arguments]  ${status}
 	Set Global Variable  ${active_row_selector}
-	...  //tr[contains(@class,"Row rowselected")]//td[count(//div[contains(text(), 'Стадия')]/ancestor::td[@draggable]/preceding-sibling::*)+1]
+	...  //tr[contains(@class,"Row rowselected")]//td[count(//div[contains(text(), 'Стадія')]/ancestor::td[@draggable]/preceding-sibling::*)+1]
 	${text}  Get Text  ${active_row_selector}
 	Should Be True  '${text}' == '${status}'
 
@@ -150,13 +150,13 @@ Documentation			Пейджа для сторінки Реєстру докуме
 Перевірити проведення документу
 	Дочекатись закінчення загрузки сторінки
 	Run Keyword And Expect Error  *not visible*  main_menu.Натиснути кнопку в головному меню за назвою  Провести (Alt+Right)
-	documents_register.Стадія поточного документа повинна бути  Проведен
+	documents_register.Стадія поточного документа повинна бути  Проведено
 
 
 Перевірити відміну проведення
 	Дочекатись закінчення загрузки сторінки
-	Run Keyword And Expect Error  *not visible*  main_menu.Натиснути кнопку в головному меню за назвою  Отменить проведение (Alt+Left)
-	documents_register.Стадія поточного документа повинна бути  Ввод
+	Run Keyword And Expect Error  *not visible*  main_menu.Натиснути кнопку в головному меню за назвою  Скасувати проведення (Alt+Left)
+	documents_register.Стадія поточного документа повинна бути  Введення
 
 
 Перевірити видалення документу
