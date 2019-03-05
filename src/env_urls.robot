@@ -39,7 +39,7 @@
 #Бюджетные
 #1)	Текущие (разработка)
 ...  BUHGOVA2=https://m.it.ua/clientmaster?proj=K_BUHGOVA2_UK&iconset=master
-...  BUHGOVA2_RU=https://m.it.ua/clientmaster?proj=K_BUHGOVA2_UK&iconset=master  #(лучше бы не использовать)
+...  BUHGOVA2_RU=https://m.it.ua/clientmaster?proj=K_BUHGOVA2_RU&iconset=master  #(лучше бы не использовать)
 ...  BUHGOVA2_RMD=https://webclient.it-enterprise.com/clientrmd/?proj=K_BUHGOVA2_UK&iconset=master
 #2)	Копии («продуктив»)
 ...  MBDEMOGOV_ALL=http://cpmb/wsmbdemogov/client
