@@ -51,7 +51,8 @@ ${login btn}					//div/span[contains(text(), 'Увійти')]|//div/span[contain
 	${user locator}  Set Variable  (//*[@class="dhxcombo_option"])[${user index + 1}]|(//*[@class="dxeListBoxItemRow_DevEx" and not(@id)])[${user index + 1}]
 	Wait Until Element Is Visible  ${user locator}
 	Click Element  ${user locator}
-	${login is}  Get Element Attribute  //*[@data-name="Login"]//input[@type='text']  value
+	${login is}  Get Element Attribute
+	...  //*[@data-name="Login"]//input[@type='text']|//*[@help-id="Login"]//input[@type="text"]  value
 	Run Keyword If  '${login is}' != '${login}'
 	...  Run Keywords
 	...  Capture Page Screenshot							AND
