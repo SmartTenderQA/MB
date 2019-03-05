@@ -9,7 +9,9 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 
 
 *** Variables ***
-
+&{user}
+...                BUHETLA2= Главный_бухгалтер
+...                MBDEMO_ALL= Головний_бухгалтер
 
 #zapusk
 #robot --consolecolors on -L TRACE:INFO -d test_output -v env:WEBCLIENT -v browser:chrome suites/run_project_in_web_interface.robot
@@ -26,4 +28,4 @@ Test Teardown  Run Keyword If Test Failed  Run Keywords
 *** Keywords ***
 Suite Precondition
 	src.Open Browser In Grid
-	authentication.Авторизуватися  ${env}
+	authentication.Авторизуватися  ${user['${env}']}
